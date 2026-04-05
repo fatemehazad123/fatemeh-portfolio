@@ -1,0 +1,29 @@
+User-agent: *
+Allow: /
+Disallow: /work/first-insurance-portal
+
+User-agent: Googlebot
+Allow: /
+Disallow: /work/first-insurance-portal
+
+User-agent: GPTBot
+Allow: /
+Disallow: /work/first-insurance-portal
+
+User-agent: Claude-Web
+Allow: /
+Disallow: /work/first-insurance-portal
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /work/first-insurance-portal
+
+User-agent: CCBot
+Allow: /
+Disallow: /work/first-insurance-portal
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /work/first-insurance-portal
+
+Sitemap: https://fatemeh.ca/sitemap.xml

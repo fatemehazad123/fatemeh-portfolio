@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { Playfair_Display, Inter } from 'next/font/google'
 import './globals.css'
 import Nav from '@/components/Nav'
@@ -19,9 +20,65 @@ const inter = Inter({
   weight: ['300', '400', '500', '600'],
 })
 
-export const metadata = {
-  title: 'Fatemeh Azadbakht - Senior Product Designer',
-  description: 'Senior Product and Visual Designer with 15+ years in fintech, enterprise SaaS, and regulated industries. Based in Toronto.',
+export const metadata: Metadata = {
+  metadataBase: new URL('https://fatemeh.ca'),
+  title: {
+    default: 'Fatemeh Azadbakht — Senior Product & Visual Designer',
+    template: '%s | Fatemeh Azadbakht',
+  },
+  description: 'Senior Product and Visual Designer with 15+ years building design systems, fintech UX, and enterprise product experiences. Based in Toronto, Canada. Available for senior and staff designer roles.',
+  keywords: [
+    'Senior Product Designer Toronto',
+    'Senior Visual Designer Toronto',
+    'Fintech UX Designer',
+    'Design Systems Designer',
+    'Enterprise UX Designer',
+    'Staff Designer Canada',
+    'WCAG Accessibility Designer',
+    'Figma Expert Toronto',
+    'TD Bank Designer',
+    'Portfolio Designer Toronto',
+    'Fatemeh Azadbakht',
+    'OOBE Studio Toronto',
+  ],
+  authors: [{ name: 'Fatemeh Azadbakht', url: 'https://fatemeh.ca' }],
+  creator: 'Fatemeh Azadbakht',
+  openGraph: {
+    type: 'website',
+    locale: 'en_CA',
+    url: 'https://fatemeh.ca',
+    siteName: 'Fatemeh Azadbakht — Portfolio',
+    title: 'Fatemeh Azadbakht — Senior Product & Visual Designer',
+    description: 'Senior Product and Visual Designer with 15+ years in fintech, enterprise SaaS, and regulated industries. Based in Toronto.',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Fatemeh Azadbakht — Senior Product & Visual Designer',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Fatemeh Azadbakht — Senior Product & Visual Designer',
+    description: 'Senior Product and Visual Designer with 15+ years in fintech, enterprise SaaS, and regulated industries. Based in Toronto.',
+    images: ['/og-image.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: 'https://fatemeh.ca',
+  },
 }
 
 export default function RootLayout({
@@ -32,6 +89,54 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${playfair.variable} ${inter.variable}`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Fatemeh Azadbakht",
+              "url": "https://fatemeh.ca",
+              "email": "info@fatemeh.ca",
+              "jobTitle": "Senior Product & Visual Designer",
+              "description": "Senior Product and Visual Designer with 15+ years building design systems, fintech UX, and enterprise product experiences.",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Toronto",
+                "addressRegion": "Ontario",
+                "addressCountry": "CA"
+              },
+              "sameAs": [
+                "https://linkedin.com/in/fazadbakht"
+              ],
+              "knowsAbout": [
+                "Product Design",
+                "Design Systems",
+                "Fintech UX",
+                "WCAG Accessibility",
+                "Figma",
+                "Enterprise SaaS Design",
+                "Visual Design",
+                "Brand Systems"
+              ],
+              "hasCredential": [
+                {
+                  "@type": "EducationalOccupationalCredential",
+                  "credentialCategory": "certificate",
+                  "recognizedBy": {
+                    "@type": "Organization",
+                    "name": "OCAD University"
+                  }
+                }
+              ],
+              "worksFor": {
+                "@type": "Organization",
+                "name": "OOBE Studio",
+                "url": "https://fatemeh.ca"
+              }
+            })
+          }}
+        />
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>

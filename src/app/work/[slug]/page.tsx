@@ -12,13 +12,22 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const study = getCaseStudyBySlug(params.slug)
   if (!study) return { title: 'Not Found' }
+
+  const isBlocked = params.slug === 'first-insurance-portal'
+
   return {
-    title: `${study.title} — Fatemeh Azadbakht`,
+    title: study.title,
     description: study.summary,
-    openGraph: {
-      title: `${study.title} — Fatemeh Azadbakht`,
+    robots: isBlocked
+      ? { index: false, follow: false, googleBot: { index: false, follow: false } }
+      : { index: true, follow: true },
+    openGraph: isBlocked ? undefined : {
+      title: `${study.title} | Fatemeh Azadbakht`,
       description: study.summary,
       url: `https://fatemeh.ca/work/${study.slug}`,
+    },
+    alternates: isBlocked ? undefined : {
+      canonical: `https://fatemeh.ca/work/${study.slug}`,
     },
   }
 }
