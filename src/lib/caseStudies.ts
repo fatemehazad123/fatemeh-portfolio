@@ -8,6 +8,7 @@ export interface CaseStudy {
   role: string
   tags: string[]
   cardDescription: string
+  statLine?: string
   cardColor: string
   cardTextColor: string
   heroImage?: string
@@ -57,6 +58,7 @@ export const caseStudies: CaseStudy[] = [
     tags: ['Information Architecture', 'UX Strategy', 'Enterprise'],
     cardDescription:
       'Translating complex cybersecurity strategy into a clear, executive-ready information system for 88,000+ TD employees across multiple audience types.',
+    statLine: '88,000+ employees · Multi-audience system',
     cardColor: '#1a3a38',
     cardTextColor: '#4FA6A1',
     heroImage: '/images/work/td-bank-hero.png',
@@ -156,6 +158,7 @@ export const caseStudies: CaseStudy[] = [
     tags: ['Design Systems', 'Public Space', 'Civic Design'],
     cardDescription:
       "A scalable identity system for Toronto's Iranian cultural district, designed within strict municipal constraints to balance cultural expression with civic infrastructure.",
+    statLine: 'City-recognized · Permanent civic infrastructure',
     cardColor: '#2d1a0a',
     cardTextColor: '#C96A4A',
     heroImage: '/images/work/little-iran-hero.jpg',
@@ -246,6 +249,7 @@ export const caseStudies: CaseStudy[] = [
     tags: ['Product Design', 'Design Systems', 'Fintech UX', 'WCAG AA', 'Brand Governance'],
     cardDescription:
       "Eleven years building and governing the complete design and product system for one of Canada's leading insurance funding companies, including fintech product UX, bilingual design, and enterprise brand governance across every customer touchpoint.",
+    statLine: '60% faster design cycles · 3 teams adopted',
     cardColor: '#0d1f1e',
     cardTextColor: '#4FA6A1',
     heroImage: '/images/work/first-hero.jpg',
@@ -341,6 +345,7 @@ export const caseStudies: CaseStudy[] = [
     tags: ['Experiential Design', 'Design Systems', 'Multi-touchpoint'],
     cardDescription:
       'A unified visual identity system for Silk Road 2 and Beyond the Silk Concert, translating cultural exchange into a scalable design language operating across stage environments, print, and digital media.',
+    statLine: '2 events · 6 weeks · Every touchpoint',
     cardColor: '#1a0d1a',
     cardTextColor: '#C96A4A',
     heroImage: '/images/work/silk-road-hero.jpg',
@@ -443,6 +448,7 @@ export const caseStudies: CaseStudy[] = [
     tags: ['Institutional Design', 'Visual Systems', 'Regulated Environment'],
     cardDescription:
       'A disciplined visual identity system for an India-themed institutional event by the Law Society of Ontario, balancing cultural expression with the credibility and restraint required in a highly regulated professional environment.',
+    statLine: '50,000 legal professionals · Institutional identity',
     cardColor: '#0d0a1a',
     cardTextColor: '#BFCFC6',
     heroImage: '/images/work/lso-hero.png',

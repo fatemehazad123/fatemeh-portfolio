@@ -7,21 +7,25 @@ const STEPS = [
     number: '01',
     title: 'Understand Before Designing',
     description: 'Every project starts with the wrong assumptions. I surface them before they become expensive. Research, stakeholder interviews, and constraint mapping before a single frame is opened.',
+    proof: 'At TD Bank, I ran stakeholder interviews across three audience types before opening a single frame.',
   },
   {
     number: '02',
     title: 'Align Before Executing',
     description: 'Misaligned teams produce misaligned products. I run structured alignment sessions to establish shared definitions of success before execution begins.',
+    proof: 'For Little Iran, I mapped municipal constraints before any visual exploration began.',
   },
   {
     number: '03',
     title: 'Systems First, Screens Second',
     description: 'A screen is an instance of a system. I design the system first - the logic, the hierarchy, the rules - so every screen inherits coherence instead of creating it from scratch.',
+    proof: 'The FIRST Insurance design system consolidated 11 years of design debt into one governed token system.',
   },
   {
     number: '04',
     title: 'Outcomes, Not Just Output',
     description: 'Deliverables are not the goal. I track design decisions against real outcomes: reduced friction, faster task completion, fewer errors, clearer communication.',
+    proof: 'The Silk Road identity delivered across 2 events in 6 weeks with zero brand inconsistencies.',
   },
 ]
 
@@ -94,6 +98,9 @@ export default function Process() {
             </h3>
             <p style={{ fontFamily: 'var(--font-inter)', fontSize: 12, fontWeight: 300, color: 'rgba(255,255,255,0.5)', lineHeight: 1.75 }}>
               {step.description}
+            </p>
+            <p style={{ fontFamily: 'var(--font-inter)', fontSize: 11, fontStyle: 'italic', color: 'var(--ink)', opacity: 0.45, marginTop: 6, lineHeight: 1.6 }}>
+              {step.proof}
             </p>
           </motion.div>
         ))}

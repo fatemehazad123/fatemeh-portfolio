@@ -83,13 +83,13 @@ export default function Hero() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <span style={{ display: 'block', width: 32, height: 1.5, background: 'var(--teal)' }} />
               <span style={{ fontFamily: 'var(--font-inter)', fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--teal)' }}>
-                Senior Product Designer
+                Senior Product &amp; Visual Designer
               </span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <span style={{ display: 'block', width: 32, height: 1.5, background: 'var(--terra)' }} />
               <span style={{ fontFamily: 'var(--font-inter)', fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--terra)' }}>
-                Fintech · Enterprise · SaaS
+                Fintech · Enterprise · Regulated Industries
               </span>
             </div>
           </motion.div>
@@ -179,6 +179,25 @@ export default function Hero() {
           </div>
         </div>
 
+        {/* Tagline */}
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.7 }}
+          style={{
+            fontFamily: 'var(--font-inter)',
+            fontSize: 13,
+            fontWeight: 300,
+            color: 'var(--ink)',
+            opacity: 0.55,
+            maxWidth: 400,
+            lineHeight: 1.7,
+            margin: '1.5rem 0',
+          }}
+        >
+          15 years building design systems and product experiences for fintech, enterprise, and regulated institutions in Canada.
+        </motion.p>
+
         {/* Bottom stats row */}
         <div
           className="hero-bottom"
@@ -218,9 +237,7 @@ export default function Hero() {
               color: 'var(--ink)',
               lineHeight: 1.5,
             }}>
-              I don&apos;t make things beautiful.
-              <br />
-              I make complexity disappear.
+              I build systems that make complex products feel simple — at TD Bank, the Law Society of Ontario, and beyond.
             </p>
           </motion.div>
 

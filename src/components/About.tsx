@@ -114,13 +114,20 @@ export default function About() {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2rem' }}>
             <p style={{ fontFamily: 'var(--font-inter)', fontSize: 13, fontWeight: 300, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8 }}>
-              With 15+ years across fintech, insurance, and enterprise SaaS, I specialize in turning ambiguous, complex requirements into products that feel effortless to use. I have shipped customer-facing platforms, internal tools, and design systems adopted across multiple product teams.
+              I have spent 15 years designing in environments where mistakes have real consequences — financial products that move money, legal systems that govern professionals, civic infrastructure that represents communities. That pressure produces a different kind of designer. One who treats clarity as a safety feature, not a design preference.
             </p>
             <p style={{ fontFamily: 'var(--font-inter)', fontSize: 13, fontWeight: 300, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8 }}>
               I work fluently across product, engineering, and business stakeholders, which means faster alignment, better trade-off decisions, and fewer surprises at handoff.
             </p>
             <p style={{ fontFamily: 'var(--font-inter)', fontSize: 13, fontWeight: 300, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8 }}>
               My work in regulated industries has shaped a design practice grounded in clarity, accessibility, and measurable outcomes.
+            </p>
+          </div>
+
+          {/* Pull quote */}
+          <div style={{ borderLeft: '2px solid var(--teal)', paddingLeft: '1.25rem', marginBottom: '1rem' }}>
+            <p style={{ fontFamily: 'var(--font-playfair)', fontSize: '0.95rem', fontStyle: 'italic', color: 'white', opacity: 0.75, lineHeight: 1.7, margin: 0 }}>
+              &ldquo;I don&apos;t make things beautiful. I make complexity disappear.&rdquo;
             </p>
           </div>
 

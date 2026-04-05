@@ -103,9 +103,14 @@ export default function Work() {
                       <h3 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(1.3rem, 2.5vw, 2rem)', fontWeight: 400, color: 'white', lineHeight: 1.2, marginBottom: '1rem' }}>
                         {study.title}
                       </h3>
-                      <p style={{ fontFamily: 'var(--font-inter)', fontSize: 12, fontWeight: 300, color: 'rgba(255,255,255,0.55)', lineHeight: 1.75, marginBottom: '1.5rem' }}>
+                      <p style={{ fontFamily: 'var(--font-inter)', fontSize: 12, fontWeight: 300, color: 'rgba(255,255,255,0.55)', lineHeight: 1.75, marginBottom: '0.75rem' }}>
                         {study.cardDescription}
                       </p>
+                      {study.statLine && (
+                        <p style={{ fontFamily: 'var(--font-inter)', fontSize: 10, fontWeight: 500, color: 'var(--teal)', marginBottom: '1.5rem' }}>
+                          {study.statLine}
+                        </p>
+                      )}
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
@@ -167,9 +172,14 @@ export default function Work() {
                     <h3 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(1.3rem, 2.5vw, 2rem)', fontWeight: 400, color: isDark ? 'white' : 'var(--ink)', lineHeight: 1.2, marginBottom: '0.75rem' }}>
                       {study.title}
                     </h3>
-                    <p style={{ fontFamily: 'var(--font-inter)', fontSize: 12, fontWeight: 300, color: isDark ? 'rgba(255,255,255,0.55)' : 'rgba(28,27,24,0.55)', lineHeight: 1.75, marginBottom: '1.5rem' }}>
+                    <p style={{ fontFamily: 'var(--font-inter)', fontSize: 12, fontWeight: 300, color: isDark ? 'rgba(255,255,255,0.55)' : 'rgba(28,27,24,0.55)', lineHeight: 1.75, marginBottom: '0.75rem' }}>
                       {study.cardDescription}
                     </p>
+                    {study.statLine && (
+                      <p style={{ fontFamily: 'var(--font-inter)', fontSize: 10, fontWeight: 500, color: 'var(--teal)', marginBottom: '1.5rem' }}>
+                        {study.statLine}
+                      </p>
+                    )}
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>

@@ -1,5 +1,5 @@
 export default function Ticker() {
-  const ITEMS = 'Product Design · Design Systems · Figma Expert · WCAG/AODA · Fintech · UX Strategy · Enterprise SaaS · TD Bank · Law Society of Ontario · FIRST Insurance · '
+  const ITEMS = 'Product Design · Design Systems · Figma Expert · WCAG/AODA · Fintech · UX Strategy · Enterprise SaaS · TD Bank · Law Society of Ontario · Regulated Industries · '
 
   const renderItems = (text: string) => {
     const parts = text.split('·')
