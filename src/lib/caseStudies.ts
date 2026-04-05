@@ -21,6 +21,9 @@ export interface CaseStudy {
   solution: string
   solutionPoints: string[]
   outcomes: Outcome[]
+  keyDecision?: string
+  tradeoff?: string
+  retrospective?: string
   testimonial?: Testimonial
   confidentialityNote?: string
   images?: string[]
@@ -142,6 +145,9 @@ export const caseStudies: CaseStudy[] = [
       '/images/work/td-bank-05.jpeg',
       '/images/work/td-bank-06.jpeg',
     ],
+    keyDecision: 'The decision not to simplify the cybersecurity content, but to layer it. A version written entirely for executives would have failed teams. A version written for teams would have failed frontline employees. The architecture had to serve all three without anyone feeling like they were reading the wrong document.',
+    tradeoff: 'Modular systems take longer to build than one-off layouts. The annual scalability was not visible in the first edition. That upfront cost was the right investment, but it required stakeholder trust that the value would compound over time.',
+    retrospective: 'If I were starting again, I would involve team leads in the content hierarchy review earlier. Their feedback in the first edition shaped several structural decisions that I arrived at too late in the process.',
     tools: ['Figma', 'Adobe InDesign', 'Adobe Illustrator', 'Adobe Photoshop'],
     nextSlug: 'little-iran-identity',
     nextTitle: 'Little Iran Cultural District',
@@ -233,6 +239,9 @@ export const caseStudies: CaseStudy[] = [
       '/images/work/little-iran-05.jpg',
       '/images/work/little-iran-06.jpg',
     ],
+    keyDecision: 'The decision to derive geometry from structural logic rather than surface imagery. It would have been faster to reference Persian decorative motifs. It produced a system instead of a pastiche.',
+    tradeoff: 'The abstraction that made the system municipally viable and culturally defensible also made it less immediately recognizable to people unfamiliar with the structural logic of Persian design. That tension is real and I made a deliberate choice to favor longevity over instant legibility.',
+    retrospective: 'A system installed in permanent public infrastructure teaches you what endurance means in design. Knowing it would be there for years made every decision more careful than it would have been otherwise.',
     tools: ['Figma', 'Adobe Illustrator', 'Adobe InDesign'],
     nextSlug: 'first-insurance-portal',
     nextTitle: 'FIRST Insurance Design System',
@@ -329,6 +338,9 @@ export const caseStudies: CaseStudy[] = [
       '/images/work/first-05.jpg',
       '/images/work/first-06.jpg',
     ],
+    keyDecision: 'The decision to build a new token system each year rather than extending the previous one. Consistency came from structural rules, not repeated visual elements. This kept the brand fresh while keeping it coherent.',
+    tradeoff: 'Annual redesign created learning curves for external vendors and internal stakeholders at the start of each cycle. The freshness was worth it, but the transition cost was real and required clear documentation and handoffs every year.',
+    retrospective: 'Eleven years in one system teaches you that governance is the hardest design problem. The technical work of building each year\'s system was simpler than the organizational work of maintaining alignment around standards.',
     tools: ['Figma', 'Adobe CC', 'Adobe InDesign', 'Adobe Illustrator'],
     nextSlug: 'silk-road-identity',
     nextTitle: 'Silk Road Event Identity',
@@ -419,6 +431,9 @@ export const caseStudies: CaseStudy[] = [
       name: 'Orkideh Salehi',
       role: 'Director, Founder and CEO, Silk Road Event and Orkid Gallery Collection',
     },
+    keyDecision: 'The decision to build the system around three abstract principles before making any visual choices. Flow, Connection, and Layered Cultural Motifs became filters rather than references. Every subsequent decision could be evaluated against them rather than against subjective aesthetic preference.',
+    tradeoff: 'Abstract design principles are harder to sell in a client presentation than a vivid visual direction. The rationale required more explanation. But it produced a system that vendors could interpret correctly without constant oversight — which under live event timelines, was the entire point.',
+    retrospective: 'The six-week timeline forced decisions that a longer process might have second-guessed. In retrospect, the constraint improved the work. Fewer revision cycles meant the system remained internally consistent instead of being refined into compromise.',
     tools: ['Figma', 'Adobe Illustrator', 'Adobe InDesign', 'Adobe Photoshop'],
     images: [
       '/images/work/silk-road-hero.jpg',
@@ -516,6 +531,9 @@ export const caseStudies: CaseStudy[] = [
           'Complete system produced and handed off on schedule enabling all stakeholders to execute without delay',
       },
     ],
+    keyDecision: 'The decision to develop two genuinely different directions rather than a safe option and a bold option. Both had to be defensible. This gave the client a real choice and produced better work, because both directions had to be fully resolved before presentation.',
+    tradeoff: 'Two complete direction proposals doubles the conceptual workload before any production begins. The investment is only justified if both directions are real. A token alternative that exists only to make the preferred direction look better is a waste of client trust.',
+    retrospective: 'Being selected again for the 2025 annual mission event confirmed that the institutional credibility built in this project was the value that mattered most to this client. That shaped how I approach every institutional brief since.',
     tools: ['Figma', 'Adobe Illustrator', 'Adobe InDesign'],
     images: [
       '/images/work/lso-hero.png',
