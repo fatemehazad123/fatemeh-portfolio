@@ -336,7 +336,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'Silk Road Event Identity',
     subtitle: 'Experiential Identity System Across Two Major Cultural Events',
     client: 'Silk Road Events',
-    year: '2024',
+    year: '2025',
     role: 'Lead Visual Designer, Brand Identity and Visual Systems',
     tags: ['Experiential Design', 'Design Systems', 'Multi-touchpoint'],
     cardDescription:
