@@ -1,405 +1,241 @@
 'use client'
+import dynamic from 'next/dynamic'
 
-import { useRef, useState, useEffect } from 'react'
-import Image from 'next/image'
-import { motion, useInView } from 'motion/react'
-import DotBackground from './DotBackground'
-import { HERO_CARDS, DEPTH } from '@/lib/heroMedia'
-
-const STATS = [
-  { number: '15+', label: 'Years' },
-  { number: '50+', label: 'Products' },
-  { number: '3',   label: 'Systems' },
-  { number: 'AA',  label: 'WCAG' },
-]
-
-const sweepWord = (index: number) => ({
-  initial: { y: '100%' },
-  animate: { y: '0%' },
-  transition: {
-    duration: 0.9,
-    delay: 0.3 + index * 0.12,
-    ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
-  },
-})
+const ShaderBackground = dynamic(
+  () => import('./ui/ShaderBackground'),
+  { ssr: false }
+)
 
 export default function Hero() {
-  const ref = useRef<HTMLElement>(null)
-  const inView = useInView(ref, { once: true, amount: 0.1 })
-  const [mounted, setMounted] = useState(false)
-
-  const mouseRef = useRef({ cx: 0, cy: 0 })
-  const phaseRef = useRef<number[]>(HERO_CARDS.map((_, i) => i * 0.8))
-  const cardElemsRef = useRef<(HTMLDivElement | null)[]>([])
-  const rafRef = useRef<number>(0)
-
-  useEffect(() => { setMounted(true) }, [])
-
-  useEffect(() => {
-    if (!mounted) return
-    let start: number | null = null
-
-    const loop = (ts: number) => {
-      if (!start) start = ts
-      const t = (ts - start) / 1000
-
-      HERO_CARDS.forEach((card, i) => {
-        const d = DEPTH[card.depth]
-        const phase = phaseRef.current[i] ?? 0
-        const floatY = Math.sin(t * d.float.speed + phase) * d.float.amp
-        const floatR = Math.sin(t * d.float.speed * 0.6 + phase) * 0.45
-        const px = mouseRef.current.cx * d.parallax.x
-        const py = mouseRef.current.cy * d.parallax.y
-
-        const el = cardElemsRef.current[i]
-        if (el) {
-          el.style.transform = `translate(${px + floatY * 0.25}px, ${py + floatY}px) rotate(${card.rotate + floatR}deg) scale(${d.scale})`
-        }
-      })
-
-      rafRef.current = requestAnimationFrame(loop)
-    }
-
-    rafRef.current = requestAnimationFrame(loop)
-    return () => cancelAnimationFrame(rafRef.current)
-  }, [mounted])
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect()
-    mouseRef.current = {
-      cx: (e.clientX - rect.left - rect.width / 2) / (rect.width / 2),
-      cy: (e.clientY - rect.top - rect.height / 2) / (rect.height / 2),
-    }
-  }
-
-  const handleMouseLeave = () => {
-    mouseRef.current = { cx: 0, cy: 0 }
-  }
-
   return (
-    <section
-      ref={ref}
-      className="hero"
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        background: 'var(--cream)',
-        minHeight: '92vh',
-        position: 'relative',
-        overflow: 'hidden',
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-      }}
-    >
-      {/* Dot grid background */}
-      <DotBackground config={{
-        bgColor:       [245, 242, 237],
-        dotColors:     [[79, 166, 161], [201, 106, 74], [143, 168, 158], [79, 166, 161]],
-        dotRadius:     3,
-        spacing:       32,
-        repelDist:     100,
-        repelForce:    0.22,
-        returnSpeed:   0.06,
-        opacity:       0.45,
-        animated:      true,
-        mouseReactive: true,
-      }} />
+    <section style={{
+      position: 'relative',
+      width: '100%',
+      height: '100vh',
+      minHeight: 640,
+      background: '#0C0C0A',
+      overflow: 'hidden',
+      display: 'flex',
+      flexDirection: 'column',
+    }}>
 
-      {/* Cream overlay */}
+      {/* WebGL Shader — full bleed, loads client-side */}
+      <ShaderBackground />
+
+      {/* Grain overlay */}
       <div style={{
         position: 'absolute', inset: 0, zIndex: 1,
-        background: 'linear-gradient(135deg, rgba(245,242,237,0.75), rgba(245,242,237,0.6))',
-        pointerEvents: 'none',
+        opacity: 0.028, pointerEvents: 'none',
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+        backgroundSize: '120px',
       }} />
 
-      {/* ── FLOATING CARDS LAYER ── */}
-      {mounted && (
+      {/* CENTRE — name + copy */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 5,
+        display: 'flex', flexDirection: 'column',
+        alignItems: 'center', justifyContent: 'center',
+        textAlign: 'center',
+        pointerEvents: 'none',
+      }}>
+        {/* Eyebrow */}
         <div style={{
-          position: 'absolute', inset: 0,
-          zIndex: 5,
-          pointerEvents: 'none',
+          display: 'flex', alignItems: 'center',
+          gap: 12, marginBottom: '2rem',
+          animation: 'heroFadeUp 0.8s 0.5s both',
         }}>
-          {HERO_CARDS.map((card, i) => {
-            const d = DEPTH[card.depth]
-            return (
-              <div
-                key={card.id}
-                ref={el => { cardElemsRef.current[i] = el }}
-                style={{
-                  position: 'absolute',
-                  ...card.position,
-                  width: card.width,
-                  height: card.height,
-                  borderRadius: 3,
-                  overflow: 'hidden',
-                  zIndex: d.zIndex,
-                  opacity: d.opacity,
-                  filter: `blur(${d.blur}px) brightness(${d.brightness})`,
-                  willChange: 'transform',
-                  boxShadow: '0 16px 48px rgba(0,0,0,0.28), 0 4px 12px rgba(0,0,0,0.14)',
-                  transform: `rotate(${card.rotate}deg) scale(${d.scale})`,
-                }}
-              >
-                {card.type === 'video' ? (
-                  <video
-                    autoPlay muted loop playsInline
-                    poster={card.poster}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                  >
-                    <source src={card.src} type="video/mp4" />
-                    {card.poster && (
-                      <Image
-                        src={card.poster}
-                        alt={card.title}
-                        fill
-                        sizes="200px"
-                        style={{ objectFit: 'cover' }}
-                      />
-                    )}
-                  </video>
-                ) : (
-                  <Image
-                    src={card.src}
-                    alt={card.title.replace('\n', ' ')}
-                    fill
-                    sizes="230px"
-                    style={{ objectFit: 'cover' }}
-                    onError={e => {
-                      const p = (e.target as HTMLElement).closest('div') as HTMLElement
-                      if (p) p.style.display = 'none'
-                    }}
-                  />
-                )}
-
-                {/* Card label */}
-                <div style={{
-                  position: 'absolute', bottom: 0, left: 0, right: 0,
-                  padding: '1.5rem 0.65rem 0.55rem',
-                  background: 'linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 100%)',
-                }}>
-                  <div style={{
-                    fontFamily: 'var(--font-inter)',
-                    fontSize: 7, fontWeight: 700,
-                    letterSpacing: '0.16em', textTransform: 'uppercase',
-                    color: card.accent, marginBottom: 2,
-                    lineHeight: 1,
-                  }}>
-                    {card.client}
-                  </div>
-                  <div style={{
-                    fontFamily: 'var(--font-inter)',
-                    fontSize: 8, fontWeight: 300,
-                    color: 'rgba(255,255,255,0.88)',
-                    lineHeight: 1.35,
-                    whiteSpace: 'pre-line',
-                  }}>
-                    {card.title}
-                  </div>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-      )}
-
-      {/* ── LEFT COLUMN ── */}
-      <div
-        style={{
-          padding: '4rem 2.5rem 3rem 3rem',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          position: 'relative',
-          zIndex: 10,
-          minHeight: '92vh',
-        }}
-      >
-        {/* Top labels */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem' }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-              <span style={{ display: 'block', width: 32, height: 1.5, background: 'var(--teal)' }} />
-              <span style={{ fontFamily: 'var(--font-inter)', fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--teal)' }}>
-                Senior Product &amp; Visual Designer
-              </span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-              <span style={{ display: 'block', width: 32, height: 1.5, background: 'var(--terra)' }} />
-              <span style={{ fontFamily: 'var(--font-inter)', fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'var(--terra)' }}>
-                Fintech · Enterprise · Regulated Industries
-              </span>
-            </div>
-          </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            style={{ fontFamily: 'var(--font-playfair)', fontSize: 12, fontStyle: 'italic', color: 'rgba(28,27,24,0.25)' }}
-          >
-            Toronto, Canada · 2026
-          </motion.p>
+          <div style={{ width: 20, height: 1, background: '#4FA6A1' }} />
+          <span style={{
+            fontFamily: 'var(--font-inter)',
+            fontSize: 9, fontWeight: 600,
+            letterSpacing: '0.24em',
+            textTransform: 'uppercase',
+            color: '#4FA6A1',
+          }}>Senior Product &amp; Visual Designer · Toronto</span>
+          <div style={{ width: 20, height: 1, background: '#4FA6A1' }} />
         </div>
 
-        {/* Name block */}
-        <div style={{ lineHeight: 0.85, letterSpacing: '-0.04em' }}>
-          {/* Line 1: Fate + meh */}
-          <div style={{ display: 'flex', gap: '0.12em', overflow: 'hidden' }}>
-            <div style={{ overflow: 'visible' }}>
-              <motion.span
-                {...sweepWord(0)}
-                style={{
-                  display: 'block', whiteSpace: 'nowrap',
-                  fontFamily: 'var(--font-playfair)',
-                  fontSize: 'clamp(4.5rem, 8vw, 8.5rem)',
-                  fontWeight: 400, color: 'var(--ink)',
-                }}
-              >
-                Fate
-              </motion.span>
-            </div>
-            <div style={{ overflow: 'visible' }}>
-              <motion.span
-                {...sweepWord(1)}
-                style={{
-                  display: 'block', whiteSpace: 'nowrap',
-                  fontFamily: 'var(--font-playfair)',
-                  fontSize: 'clamp(4.5rem, 8vw, 8.5rem)',
-                  fontWeight: 400, fontStyle: 'italic',
-                  color: 'var(--teal)',
-                }}
-              >
-                meh
-              </motion.span>
-            </div>
-          </div>
+        {/* NAME */}
+        <div style={{ marginBottom: '0.5rem' }}>
+          <span style={{
+            fontFamily: 'var(--font-playfair)',
+            fontSize: 'clamp(5rem, 11vw, 10rem)',
+            fontWeight: 400, color: 'white',
+            lineHeight: 0.84, letterSpacing: '-0.045em',
+            display: 'block',
+            animation: 'nameReveal 1s cubic-bezier(0.16,1,0.3,1) 0.9s both',
+            textShadow: [
+              '0 0 120px rgba(10,10,8,0.98)',
+              '0 0 60px rgba(10,10,8,0.9)',
+              '0 4px 40px rgba(10,10,8,0.8)',
+            ].join(', '),
+          }}>Fatemeh</span>
 
-          {/* Line 2: Azad + bakht */}
-          <div style={{ display: 'flex', gap: '0.12em', overflow: 'hidden' }}>
-            <div style={{ overflow: 'visible' }}>
-              <motion.span
-                {...sweepWord(2)}
-                style={{
-                  display: 'block', whiteSpace: 'nowrap',
-                  fontFamily: 'var(--font-playfair)',
-                  fontSize: 'clamp(4.5rem, 8vw, 8.5rem)',
-                  fontWeight: 400, fontStyle: 'italic',
-                  color: 'transparent',
-                  WebkitTextStroke: '1.5px var(--ink)',
-                }}
-              >
-                Azad
-              </motion.span>
-            </div>
-            <div style={{ overflow: 'visible' }}>
-              <motion.span
-                {...sweepWord(3)}
-                style={{
-                  display: 'block', whiteSpace: 'nowrap',
-                  fontFamily: 'var(--font-playfair)',
-                  fontSize: 'clamp(4.5rem, 8vw, 8.5rem)',
-                  fontWeight: 400, fontStyle: 'italic',
-                  color: 'var(--terra)',
-                }}
-              >
-                bakht
-              </motion.span>
-            </div>
-          </div>
+          <span style={{
+            fontFamily: 'var(--font-playfair)',
+            fontSize: 'clamp(5rem, 11vw, 10rem)',
+            fontWeight: 400, fontStyle: 'italic',
+            color: 'transparent',
+            WebkitTextStroke: '1.5px rgba(255,255,255,0.75)',
+            lineHeight: 0.84, letterSpacing: '-0.045em',
+            display: 'block',
+            paddingLeft: '3%',
+            animation: 'nameReveal 1s cubic-bezier(0.16,1,0.3,1) 1.15s both',
+            filter: 'drop-shadow(0 0 60px rgba(10,10,8,0.95))',
+          }}>Azadbakht</span>
         </div>
+
+        {/* Teal line draws under name */}
+        <div style={{
+          height: 1,
+          background: 'linear-gradient(to right, transparent, #4FA6A1, transparent)',
+          animation: 'lineGrow 0.8s cubic-bezier(0.16,1,0.3,1) 2s both',
+          marginBottom: '2rem',
+        }} />
 
         {/* Tagline */}
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          style={{
+        <p style={{
+          fontFamily: 'var(--font-inter)',
+          fontSize: 13, fontWeight: 300,
+          color: 'white', opacity: 0.4,
+          lineHeight: 1.8, maxWidth: 460,
+          marginBottom: '2.25rem',
+          animation: 'heroFadeUp 0.8s 2s both',
+          textShadow: '0 2px 30px rgba(10,10,8,0.9)',
+        }}>
+          15 years building design systems for fintech,<br />
+          enterprise, and regulated institutions.
+        </p>
+
+        {/* Buttons */}
+        <div style={{
+          display: 'flex', gap: 12,
+          alignItems: 'center',
+          pointerEvents: 'auto',
+          animation: 'heroFadeUp 0.7s 2.3s both',
+        }}>
+          <a href="/#work" style={{
             fontFamily: 'var(--font-inter)',
-            fontSize: 13, fontWeight: 300,
-            color: 'var(--ink)', opacity: 0.55,
-            maxWidth: 400, lineHeight: 1.7,
-            margin: '1.5rem 0',
-          }}
-        >
-          15 years building design systems and product experiences for fintech, enterprise, and regulated institutions in Canada.
-        </motion.p>
-
-        {/* Bottom stats row */}
-        <div
-          className="hero-bottom"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr 1fr',
-            gap: '2rem',
-            borderTop: '1px solid rgba(28,27,24,0.1)',
-            paddingTop: '2rem',
-          }}
-        >
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.9 }}
-          >
-            <div style={{ fontFamily: 'var(--font-inter)', fontSize: 11, fontWeight: 400, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'rgba(28,27,24,0.35)', lineHeight: 1.8 }}>
-              <div>Senior Product</div>
-              <div>and Visual</div>
-              <div>Designer</div>
-              <div style={{ height: '0.6em' }} />
-              <div>15+ Years</div>
-              <div>Toronto CA</div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 1.0 }}
-            style={{ borderLeft: '2px solid var(--teal)', paddingLeft: '1.25rem' }}
-          >
-            <p style={{
-              fontFamily: 'var(--font-playfair)',
-              fontSize: 'clamp(1.1rem, 2vw, 1.4rem)',
-              fontStyle: 'italic', color: 'var(--ink)', lineHeight: 1.5,
-            }}>
-              I build systems that make complex products feel simple — at TD Bank, the Law Society of Ontario, and beyond.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 1.1 }}
-            style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', gap: '1.2rem' }}
-          >
-            {STATS.map(stat => (
-              <div key={stat.label}>
-                <div style={{ fontFamily: 'var(--font-playfair)', fontSize: '1.6rem', color: 'var(--ink)', lineHeight: 1 }}>
-                  {stat.number}
-                </div>
-                <div style={{ fontFamily: 'var(--font-inter)', fontSize: 8, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.2em', color: 'rgba(28,27,24,0.35)', marginTop: 2 }}>
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </motion.div>
+            fontSize: 9, fontWeight: 600,
+            letterSpacing: '0.14em',
+            textTransform: 'uppercase',
+            background: 'white', color: '#0C0C0A',
+            padding: '0.85rem 2rem',
+            borderRadius: 100,
+            textDecoration: 'none',
+          }}>View Work</a>
+          <a href="/resume" style={{
+            fontFamily: 'var(--font-inter)',
+            fontSize: 9, fontWeight: 500,
+            letterSpacing: '0.14em',
+            textTransform: 'uppercase',
+            color: 'white', opacity: 0.4,
+            background: 'transparent',
+            border: '1px solid rgba(255,255,255,0.18)',
+            padding: '0.85rem 1.5rem',
+            borderRadius: 100,
+            textDecoration: 'none',
+          }}>Resume</a>
         </div>
       </div>
 
-      {/* ── RIGHT COLUMN (spacer — cards float freely over it) ── */}
-      <div className="hero-right-col" style={{ position: 'relative', zIndex: 2 }} />
+      {/* SCROLL HINT */}
+      <div style={{
+        position: 'absolute',
+        bottom: '5.5rem', left: '50%',
+        transform: 'translateX(-50%)',
+        zIndex: 6,
+        display: 'flex', flexDirection: 'column',
+        alignItems: 'center', gap: 5,
+        opacity: 0.35,
+        animation: 'heroFadeUp 0.6s 2.9s both',
+      }}>
+        <div style={{
+          width: 1, height: 28,
+          background: 'linear-gradient(to bottom, rgba(255,255,255,0.45), transparent)',
+          animation: 'scrollBob 2s ease-in-out infinite',
+        }} />
+        <span style={{
+          fontFamily: 'var(--font-inter)',
+          fontSize: 7, fontWeight: 600,
+          letterSpacing: '0.2em',
+          textTransform: 'uppercase',
+          color: 'white',
+        }}>Scroll</span>
+      </div>
+
+      {/* STATS BAR */}
+      <div style={{
+        position: 'absolute',
+        bottom: 0, left: 0, right: 0,
+        zIndex: 6,
+        display: 'flex',
+        borderTop: '1px solid rgba(255,255,255,0.06)',
+        background: 'rgba(10,10,8,0.6)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        animation: 'heroFadeUp 0.7s 2.6s both',
+      }}>
+        {([
+          { n: '15+',  l: 'Years',         s: 'Fintech · Enterprise', c: '#4FA6A1' },
+          { n: '50+',  l: 'Products',       s: 'Shipped',              c: 'white'   },
+          { n: '88K+', l: 'Users reached',  s: 'One unified system',   c: '#C96A4A' },
+          { n: 'AA',   l: 'WCAG',           s: 'Every touchpoint',     c: '#BFCFC6' },
+        ] as { n: string; l: string; s: string; c: string }[]).map((stat, i) => (
+          <div key={i} style={{
+            flex: 1, padding: '1rem 2.5rem',
+            borderRight: i < 3 ? '1px solid rgba(255,255,255,0.05)' : 'none',
+            display: 'flex', alignItems: 'center', gap: 10,
+          }}>
+            <span style={{
+              fontFamily: 'var(--font-playfair)',
+              fontSize: '1.5rem', color: stat.c,
+              lineHeight: 1, flexShrink: 0,
+            }}>{stat.n}</span>
+            <div>
+              <span style={{
+                fontFamily: 'var(--font-inter)',
+                fontSize: 7, fontWeight: 600,
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: 'white', opacity: 0.22,
+                display: 'block',
+              }}>{stat.l}</span>
+              <span style={{
+                fontFamily: 'var(--font-inter)',
+                fontSize: 8, color: 'white',
+                opacity: 0.28, display: 'block',
+                marginTop: 1,
+              }}>{stat.s}</span>
+            </div>
+          </div>
+        ))}
+      </div>
 
       <style>{`
-        @media (max-width: 900px) {
-          .hero { grid-template-columns: 1fr !important; }
-          .hero-right-col { display: none !important; }
+        @keyframes heroFadeUp {
+          from { opacity: 0; transform: translateY(12px); }
+          to   { opacity: 1; transform: translateY(0); }
         }
-        @media (max-width: 768px) {
-          .hero-bottom { grid-template-columns: 1fr !important; }
+        @keyframes nameReveal {
+          from {
+            opacity: 0;
+            transform: translateY(60px) skewY(2deg);
+            filter: blur(12px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) skewY(0deg);
+            filter: blur(0px);
+          }
+        }
+        @keyframes lineGrow {
+          from { width: 0; }
+          to   { width: 55%; }
+        }
+        @keyframes scrollBob {
+          0%, 100% { opacity: 0.35; }
+          50%      { opacity: 0.65; }
         }
       `}</style>
     </section>
