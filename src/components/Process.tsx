@@ -69,7 +69,7 @@ export default function Process() {
 
       {/* Steps */}
       <div
-        className="process-grid"
+        className="process-steps"
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(4, 1fr)',
@@ -108,7 +108,12 @@ export default function Process() {
 
       <style>{`
         @media (max-width: 768px) {
-          .process-grid {
+          .process-steps {
+            grid-template-columns: 1fr 1fr !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .process-steps {
             grid-template-columns: 1fr !important;
           }
         }

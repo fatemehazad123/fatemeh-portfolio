@@ -21,7 +21,7 @@ export default function Nav() {
   const isDark = isHome && !scrolled
 
   return (
-    <nav style={{
+    <nav aria-label="Main navigation" style={{
       position: isHome ? 'fixed' : 'sticky',
       top: 0,
       left: 0,

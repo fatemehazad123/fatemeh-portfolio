@@ -2,7 +2,7 @@
 import React from 'react'
 
 const sectionLabel: React.CSSProperties = {
-  fontSize: 8,
+  fontSize: 9,
   fontWeight: 700,
   letterSpacing: '0.22em',
   textTransform: 'uppercase',
@@ -13,24 +13,24 @@ const sectionLabel: React.CSSProperties = {
 }
 
 const bodyText: React.CSSProperties = {
-  fontSize: 12,
+  fontSize: 15,
   fontWeight: 300,
   color: '#2E2E2C',
   opacity: 0.7,
-  lineHeight: 1.85,
+  lineHeight: 1.95,
 }
 
 export default function ResumePage() {
   return (
     <div style={{ background: '#F4F6F4', minHeight: '100vh' }}>
-      <main style={{
-        maxWidth: 860,
+      <main id="main-content" style={{
+        maxWidth: 920,
         margin: '0 auto',
         padding: '5rem 2rem 6rem',
       }}>
 
         {/* HEADER */}
-        <div style={{
+        <div className="resume-header" style={{
           display: 'grid',
           gridTemplateColumns: '1fr auto',
           alignItems: 'flex-start',
@@ -50,7 +50,7 @@ export default function ResumePage() {
             }}>Fatemeh Azadbakht</h1>
             <p style={{
               fontFamily: 'var(--font-inter)',
-              fontSize: 13,
+              fontSize: 15,
               fontWeight: 400,
               color: '#4FA6A1',
               letterSpacing: '0.04em',
@@ -68,34 +68,51 @@ export default function ResumePage() {
                 item.href
                   ? <a key={item.label} href={item.href} style={{
                       fontFamily: 'var(--font-inter)',
-                      fontSize: 11, color: '#2E2E2C', opacity: 0.55,
+                      fontSize: 13, color: '#2E2E2C', opacity: 0.55,
                       textDecoration: 'none',
                     }}>{item.label}</a>
                   : <span key={item.label} style={{
                       fontFamily: 'var(--font-inter)',
-                      fontSize: 11, color: '#2E2E2C', opacity: 0.55,
+                      fontSize: 13, color: '#2E2E2C', opacity: 0.55,
                     }}>{item.label}</span>
               ))}
             </div>
           </div>
 
-          <a
-            href="/Fatemeh_Azadbakht_Resume.pdf"
-            download
-            style={{
-              fontFamily: 'var(--font-inter)',
-              fontSize: 9, fontWeight: 600,
-              letterSpacing: '0.14em',
-              textTransform: 'uppercase',
-              background: '#2E2E2C',
-              color: '#F4F6F4',
-              padding: '0.7rem 1.4rem',
-              borderRadius: 100,
-              textDecoration: 'none',
-              whiteSpace: 'nowrap',
-              flexShrink: 0,
-            }}
-          >↓ Download PDF</a>
+          <div className="no-print" style={{ display: 'flex', gap: '0.75rem', flexShrink: 0 }}>
+            <a
+              href="/Fatemeh_Azadbakht_Resume.pdf"
+              download
+              style={{
+                fontFamily: 'var(--font-inter)',
+                fontSize: 10, fontWeight: 600,
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                background: '#2E2E2C',
+                color: '#F4F6F4',
+                padding: '0.7rem 1.4rem',
+                borderRadius: 100,
+                textDecoration: 'none',
+                whiteSpace: 'nowrap',
+              }}
+            >↓ Download PDF</a>
+            <button
+              onClick={() => window.print()}
+              style={{
+                fontFamily: 'var(--font-inter)',
+                fontSize: 10, fontWeight: 600,
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                background: 'transparent',
+                color: '#2E2E2C',
+                border: '1px solid rgba(46,46,44,0.2)',
+                padding: '0.7rem 1.4rem',
+                borderRadius: 100,
+                cursor: 'pointer',
+                whiteSpace: 'nowrap',
+              }}
+            >Print / Save PDF</button>
+          </div>
         </div>
 
         {/* TWO COLUMN LAYOUT */}
@@ -185,19 +202,19 @@ export default function ResumePage() {
                   }}>
                     <div style={{
                       fontFamily: 'var(--font-playfair)',
-                      fontSize: 15, fontWeight: 500,
+                      fontSize: 17, fontWeight: 500,
                       color: '#2E2E2C',
                     }}>{job.title}</div>
                     <div style={{
                       fontFamily: 'var(--font-inter)',
-                      fontSize: 10, color: '#2E2E2C',
+                      fontSize: 12, color: '#2E2E2C',
                       opacity: 0.4, whiteSpace: 'nowrap',
                       flexShrink: 0,
                     }}>{job.period}</div>
                   </div>
                   <div style={{
                     fontFamily: 'var(--font-inter)',
-                    fontSize: 11, fontWeight: 600,
+                    fontSize: 13, fontWeight: 600,
                     color: '#4FA6A1',
                     letterSpacing: '0.04em',
                     marginBottom: '0.75rem',
@@ -206,9 +223,9 @@ export default function ResumePage() {
                     {job.bullets.map((b, bi) => (
                       <li key={bi} style={{
                         fontFamily: 'var(--font-inter)',
-                        fontSize: 12, fontWeight: 300,
+                        fontSize: 14, fontWeight: 300,
                         color: '#2E2E2C', opacity: 0.7,
-                        lineHeight: 1.75,
+                        lineHeight: 1.85,
                         paddingLeft: '1rem',
                         position: 'relative',
                         marginBottom: '0.3rem',
@@ -254,18 +271,18 @@ export default function ResumePage() {
                     <div>
                       <div style={{
                         fontFamily: 'var(--font-inter)',
-                        fontSize: 13, fontWeight: 600,
+                        fontSize: 14, fontWeight: 600,
                         color: '#2E2E2C', marginBottom: 2,
                       }}>{ed.degree}</div>
                       <div style={{
                         fontFamily: 'var(--font-inter)',
-                        fontSize: 11, color: '#4FA6A1',
+                        fontSize: 13, color: '#4FA6A1',
                         fontWeight: 500,
                       }}>{ed.school}</div>
                     </div>
                     <div style={{
                       fontFamily: 'var(--font-inter)',
-                      fontSize: 10, color: '#2E2E2C',
+                      fontSize: 12, color: '#2E2E2C',
                       opacity: 0.35, whiteSpace: 'nowrap',
                     }}>{ed.year}</div>
                   </div>
@@ -300,12 +317,12 @@ export default function ResumePage() {
                 }}>
                   <span style={{
                     fontFamily: 'var(--font-playfair)',
-                    fontSize: '1.8rem', color: s.c,
-                    lineHeight: 1, flexShrink: 0, width: 52,
+                    fontSize: '2.2rem', color: s.c,
+                    lineHeight: 1, flexShrink: 0, width: 60,
                   }}>{s.n}</span>
                   <span style={{
                     fontFamily: 'var(--font-inter)',
-                    fontSize: 10, fontWeight: 500,
+                    fontSize: 11, fontWeight: 500,
                     color: 'white', opacity: 0.4,
                     textTransform: 'uppercase',
                     letterSpacing: '0.1em',
@@ -326,7 +343,7 @@ export default function ResumePage() {
                 ].map(skill => (
                   <span key={skill} style={{
                     fontFamily: 'var(--font-inter)',
-                    fontSize: 10, fontWeight: 500,
+                    fontSize: 12, fontWeight: 500,
                     color: '#2E2E2C',
                     background: 'rgba(46,46,44,0.07)',
                     border: '1px solid rgba(46,46,44,0.12)',
@@ -348,12 +365,12 @@ export default function ResumePage() {
                 <div key={i} style={{
                   display: 'flex', justifyContent: 'space-between',
                   fontFamily: 'var(--font-inter)',
-                  fontSize: 12, color: '#2E2E2C',
+                  fontSize: 14, color: '#2E2E2C',
                   padding: '0.5rem 0',
                   borderBottom: i < 2 ? '1px solid rgba(46,46,44,0.07)' : 'none',
                 }}>
                   <span style={{ fontWeight: 500 }}>{l.lang}</span>
-                  <span style={{ opacity: 0.45, fontSize: 11 }}>{l.level}</span>
+                  <span style={{ opacity: 0.45, fontSize: 12 }}>{l.level}</span>
                 </div>
               ))}
             </div>
@@ -370,7 +387,7 @@ export default function ResumePage() {
               ].map((c, i) => (
                 <div key={i} style={{
                   fontFamily: 'var(--font-inter)',
-                  fontSize: 11, fontWeight: 300,
+                  fontSize: 13, fontWeight: 300,
                   color: '#2E2E2C', opacity: 0.65,
                   padding: '0.4rem 0',
                   borderBottom: i < 4 ? '1px solid rgba(46,46,44,0.06)' : 'none',
@@ -393,7 +410,7 @@ export default function ResumePage() {
               ].map((h, i) => (
                 <div key={i} style={{
                   fontFamily: 'var(--font-inter)',
-                  fontSize: 11, fontWeight: 300,
+                  fontSize: 13, fontWeight: 300,
                   color: '#2E2E2C', opacity: 0.65,
                   padding: '0.4rem 0',
                   borderBottom: i < 3 ? '1px solid rgba(46,46,44,0.06)' : 'none',
@@ -409,7 +426,7 @@ export default function ResumePage() {
             <div style={{ borderLeft: '2px solid #4FA6A1', paddingLeft: '1rem' }}>
               <p style={{
                 fontFamily: 'var(--font-playfair)',
-                fontSize: 12, fontStyle: 'italic',
+                fontSize: 14, fontStyle: 'italic',
                 color: '#2E2E2C', opacity: 0.7,
                 lineHeight: 1.7, marginBottom: '0.6rem',
               }}>
@@ -418,7 +435,7 @@ export default function ResumePage() {
               </p>
               <span style={{
                 fontFamily: 'var(--font-inter)',
-                fontSize: 9, fontWeight: 600,
+                fontSize: 10, fontWeight: 600,
                 letterSpacing: '0.12em',
                 textTransform: 'uppercase',
                 color: '#4FA6A1',
@@ -432,6 +449,8 @@ export default function ResumePage() {
       <style>{`
         @media (max-width: 768px) {
           .resume-cols { grid-template-columns: 1fr !important; }
+          .resume-header { grid-template-columns: 1fr !important; }
+          .resume-header > div:last-child { justify-content: flex-start; }
         }
       `}</style>
     </div>

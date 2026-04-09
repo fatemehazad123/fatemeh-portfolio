@@ -8,16 +8,19 @@ const ShaderBackground = dynamic(
 
 export default function Hero() {
   return (
-    <section style={{
-      position: 'relative',
-      width: '100%',
-      height: '100vh',
-      minHeight: 640,
-      background: '#0C0C0A',
-      overflow: 'hidden',
-      display: 'flex',
-      flexDirection: 'column',
-    }}>
+    <section
+      aria-label="Hero — Senior Product and Visual Designer"
+      style={{
+        position: 'relative',
+        width: '100%',
+        height: '100vh',
+        minHeight: 640,
+        background: '#0C0C0A',
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
 
       {/* WebGL Shader — full bleed, loads client-side */}
       <ShaderBackground />
@@ -38,106 +41,122 @@ export default function Hero() {
         textAlign: 'center',
         pointerEvents: 'none',
       }}>
-        {/* Eyebrow */}
+
+        {/* Halo wrapper — dark radial fog behind all centre content */}
         <div style={{
-          display: 'flex', alignItems: 'center',
-          gap: 12, marginBottom: '2rem',
-          animation: 'heroFadeUp 0.8s 0.5s both',
-        }}>
-          <div style={{ width: 20, height: 1, background: '#4FA6A1' }} />
-          <span style={{
-            fontFamily: 'var(--font-inter)',
-            fontSize: 9, fontWeight: 600,
-            letterSpacing: '0.24em',
-            textTransform: 'uppercase',
-            color: '#4FA6A1',
-            textShadow: '0 2px 20px rgba(5,5,4,0.9)',
-          }}>Senior Product &amp; Visual Designer · Toronto</span>
-          <div style={{ width: 20, height: 1, background: '#4FA6A1' }} />
-        </div>
-
-        {/* NAME */}
-        <div style={{
-          marginBottom: '0.5rem',
-          background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(5,5,4,0.75) 0%, transparent 100%)',
-          padding: '1rem 3rem',
-          borderRadius: 8,
-        }}>
-          <span style={{
-            fontFamily: 'var(--font-playfair)',
-            fontSize: 'clamp(5rem, 11vw, 10rem)',
-            fontWeight: 400, color: 'white',
-            lineHeight: 0.84, letterSpacing: '-0.045em',
-            display: 'block',
-            animation: 'nameReveal 1s cubic-bezier(0.16,1,0.3,1) 0.9s both',
-            textShadow: '0 0 200px rgba(5,5,4,1), 0 0 100px rgba(5,5,4,1), 0 0 60px rgba(5,5,4,0.98), 0 4px 40px rgba(5,5,4,0.9)',
-          }}>Fatemeh</span>
-
-          <span style={{
-            fontFamily: 'var(--font-playfair)',
-            fontSize: 'clamp(5rem, 11vw, 10rem)',
-            fontWeight: 400, fontStyle: 'italic',
-            color: 'transparent',
-            WebkitTextStroke: '1.5px rgba(255,255,255,0.75)',
-            lineHeight: 0.84, letterSpacing: '-0.045em',
-            display: 'block',
-            paddingLeft: '3%',
-            animation: 'nameReveal 1s cubic-bezier(0.16,1,0.3,1) 1.15s both',
-            filter: 'drop-shadow(0 0 80px rgba(5,5,4,1)) drop-shadow(0 0 40px rgba(5,5,4,0.95))',
-          }}>Azadbakht</span>
-        </div>
-
-        {/* Teal line draws under name */}
-        <div style={{
-          height: 1,
-          background: 'linear-gradient(to right, transparent, #4FA6A1, transparent)',
-          animation: 'lineGrow 0.8s cubic-bezier(0.16,1,0.3,1) 2s both',
-          marginBottom: '2rem',
-        }} />
-
-        {/* Tagline */}
-        <p style={{
-          fontFamily: 'var(--font-inter)',
-          fontSize: 13, fontWeight: 300,
-          color: 'white', opacity: 0.4,
-          lineHeight: 1.8, maxWidth: 460,
-          marginBottom: '2.25rem',
-          animation: 'heroFadeUp 0.8s 2s both',
-          textShadow: '0 2px 40px rgba(5,5,4,1), 0 0 80px rgba(5,5,4,0.95)',
-        }}>
-          15 years building design systems for fintech,<br />
-          enterprise, and regulated institutions.
-        </p>
-
-        {/* Buttons */}
-        <div style={{
-          display: 'flex', gap: 12,
+          background: 'radial-gradient(ellipse 75% 65% at 50% 50%, rgba(5,5,4,0.82) 0%, rgba(5,5,4,0.55) 45%, transparent 75%)',
+          padding: 'clamp(1.5rem, 4vw, 3rem) clamp(1rem, 5vw, 4rem)',
+          borderRadius: 24,
+          display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
-          pointerEvents: 'auto',
-          animation: 'heroFadeUp 0.7s 2.3s both',
+          textAlign: 'center',
         }}>
-          <a href="/#work" style={{
+
+          {/* Eyebrow */}
+          <div style={{
+            display: 'flex', alignItems: 'center',
+            gap: 12, marginBottom: '2rem',
+            animation: 'heroFadeUp 0.8s 0.5s both',
+          }}>
+            <div style={{ width: 20, height: 1, background: '#4FA6A1' }} />
+            <span style={{
+              fontFamily: 'var(--font-inter)',
+              fontSize: 9, fontWeight: 600,
+              letterSpacing: '0.24em',
+              textTransform: 'uppercase',
+              color: '#4FA6A1',
+              textShadow: '0 2px 20px rgba(5,5,4,0.9)',
+            }}>Senior Product &amp; Visual Designer · Toronto</span>
+            <div style={{ width: 20, height: 1, background: '#4FA6A1' }} />
+          </div>
+
+          {/* NAME */}
+          <div style={{
+            marginBottom: '0.5rem',
+            background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(5,5,4,0.75) 0%, transparent 100%)',
+            padding: '1rem 3rem',
+            borderRadius: 8,
+          }}>
+            <span className="hero-name" style={{
+              fontFamily: 'var(--font-playfair)',
+              fontSize: 'clamp(3.2rem, 10vw, 9rem)',
+              fontWeight: 400, color: 'white',
+              lineHeight: 0.84, letterSpacing: '-0.045em',
+              display: 'block',
+              animation: 'nameReveal 1s cubic-bezier(0.16,1,0.3,1) 0.9s both',
+              textShadow: '0 0 200px rgba(3,3,2,1), 0 0 120px rgba(3,3,2,1), 0 0 80px rgba(3,3,2,0.98), 0 0 40px rgba(3,3,2,0.95), 0 4px 30px rgba(3,3,2,0.9)',
+            }}>Fatemeh</span>
+
+            <span className="hero-name" style={{
+              fontFamily: 'var(--font-playfair)',
+              fontSize: 'clamp(3.2rem, 10vw, 9rem)',
+              fontWeight: 400, fontStyle: 'italic',
+              color: 'transparent',
+              WebkitTextStroke: '1.5px rgba(255,255,255,0.75)',
+              lineHeight: 0.84, letterSpacing: '-0.045em',
+              display: 'block',
+              paddingLeft: '3%',
+              background: 'rgba(5,5,4,0.3)',
+              borderRadius: 4,
+              animation: 'nameReveal 1s cubic-bezier(0.16,1,0.3,1) 1.15s both',
+              filter: 'drop-shadow(0 0 80px rgba(3,3,2,1)) drop-shadow(0 0 40px rgba(3,3,2,0.95))',
+            }}>Azadbakht</span>
+          </div>
+
+          {/* Teal line draws under name */}
+          <div style={{
+            height: 1,
+            background: 'linear-gradient(to right, transparent, #4FA6A1, transparent)',
+            animation: 'lineGrow 0.8s cubic-bezier(0.16,1,0.3,1) 2s both',
+            marginBottom: '2rem',
+          }} />
+
+          {/* Tagline */}
+          <p style={{
             fontFamily: 'var(--font-inter)',
-            fontSize: 9, fontWeight: 600,
-            letterSpacing: '0.14em',
-            textTransform: 'uppercase',
-            background: 'white', color: '#0C0C0A',
-            padding: '0.85rem 2rem',
-            borderRadius: 100,
-            textDecoration: 'none',
-          }}>View Work</a>
-          <a href="/resume" style={{
-            fontFamily: 'var(--font-inter)',
-            fontSize: 9, fontWeight: 500,
-            letterSpacing: '0.14em',
-            textTransform: 'uppercase',
+            fontSize: 13, fontWeight: 300,
             color: 'white', opacity: 0.4,
-            background: 'transparent',
-            border: '1px solid rgba(255,255,255,0.18)',
-            padding: '0.85rem 1.5rem',
-            borderRadius: 100,
-            textDecoration: 'none',
-          }}>Resume</a>
+            lineHeight: 1.8, maxWidth: 460,
+            marginBottom: '2.25rem',
+            animation: 'heroFadeUp 0.8s 2s both',
+            textShadow: '0 0 60px rgba(3,3,2,1), 0 2px 40px rgba(3,3,2,1), 0 0 20px rgba(3,3,2,0.9)',
+          }}>
+            15 years building design systems for fintech,<br />
+            enterprise, and regulated institutions.
+          </p>
+
+          {/* Buttons */}
+          <div style={{
+            display: 'flex', gap: 12,
+            alignItems: 'center',
+            pointerEvents: 'auto',
+            animation: 'heroFadeUp 0.7s 2.3s both',
+          }}>
+            <a href="/#work" style={{
+              fontFamily: 'var(--font-inter)',
+              fontSize: 9, fontWeight: 600,
+              letterSpacing: '0.14em',
+              textTransform: 'uppercase',
+              background: 'white', color: '#0C0C0A',
+              padding: '0.85rem 2rem',
+              borderRadius: 100,
+              textDecoration: 'none',
+            }}>View Work</a>
+            <a href="/resume" style={{
+              fontFamily: 'var(--font-inter)',
+              fontSize: 9, fontWeight: 500,
+              letterSpacing: '0.14em',
+              textTransform: 'uppercase',
+              color: 'white', opacity: 0.4,
+              background: 'transparent',
+              border: '1px solid rgba(255,255,255,0.18)',
+              padding: '0.85rem 1.5rem',
+              borderRadius: 100,
+              textDecoration: 'none',
+            }}>Resume</a>
+          </div>
+
         </div>
       </div>
 
@@ -167,7 +186,7 @@ export default function Hero() {
       </div>
 
       {/* STATS BAR */}
-      <div style={{
+      <div className="hero-stats" style={{
         position: 'absolute',
         bottom: 0, left: 0, right: 0,
         zIndex: 6,
@@ -200,13 +219,13 @@ export default function Hero() {
                 fontSize: 7, fontWeight: 600,
                 letterSpacing: '0.14em',
                 textTransform: 'uppercase',
-                color: 'white', opacity: 0.22,
+                color: 'white', opacity: 0.38,
                 display: 'block',
               }}>{stat.l}</span>
               <span style={{
                 fontFamily: 'var(--font-inter)',
                 fontSize: 8, color: 'white',
-                opacity: 0.28, display: 'block',
+                opacity: 0.45, display: 'block',
                 marginTop: 1,
               }}>{stat.s}</span>
             </div>
@@ -238,6 +257,9 @@ export default function Hero() {
         @keyframes scrollBob {
           0%, 100% { opacity: 0.35; }
           50%      { opacity: 0.65; }
+        }
+        @media (max-width: 480px) {
+          .hero-name { font-size: clamp(2.8rem, 14vw, 4rem) !important; }
         }
       `}</style>
     </section>

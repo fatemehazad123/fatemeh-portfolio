@@ -46,6 +46,7 @@ export default function Work() {
 
       {/* Grid */}
       <div
+        className="work-grid"
         style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
@@ -72,6 +73,7 @@ export default function Work() {
               >
                 <Link
                   href={`/work/${study.slug}`}
+                  aria-label={`View case study: ${study.title}`}
                   style={{
                     display: 'grid',
                     gridTemplateColumns: '1fr 1fr',
@@ -140,6 +142,7 @@ export default function Work() {
             >
               <Link
                 href={`/work/${study.slug}`}
+                aria-label={`View case study: ${study.title}`}
                 style={{
                   display: 'flex',
                   flexDirection: 'column',

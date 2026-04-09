@@ -92,9 +92,42 @@ button { font-family: inherit; }
 }
 
 @media print {
-  nav, .cursor-ring, .cursor-dot {
+  nav, .cursor-ring, .cursor-dot, .no-print {
     display: none !important;
   }
   body { background: white !important; }
-  *, *::before, *::after { cursor: auto !important; }
+  *, *::before, *::after {
+    cursor: auto !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .hero-stats {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+  }
+  nav {
+    padding: 1rem 1.25rem !important;
+  }
+  .work-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .about-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .process-steps {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .process-steps {
+    grid-template-columns: 1fr !important;
+  }
+  .hero-stats {
+    grid-template-columns: 1fr 1fr !important;
+  }
 }

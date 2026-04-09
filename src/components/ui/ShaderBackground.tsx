@@ -103,7 +103,7 @@ export default function ShaderBackground() {
           else if(mod(float(l), 3.0) < 2.0) chosenColor = lineColor2;
           else                               chosenColor = lineColor3;
 
-          lines += line * chosenColor * rand * 0.8;
+          lines += line * chosenColor * rand * 0.65;
         }
 
         vec4 fragColor = mix(bgColor1, bgColor2, uv.x + uv.y * 0.3);
