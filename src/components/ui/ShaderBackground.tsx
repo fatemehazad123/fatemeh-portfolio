@@ -166,6 +166,15 @@ export default function ShaderBackground() {
     window.addEventListener('resize', resize)
     resize()
 
+    // WCAG 2.3.3 — skip animation for users who prefer reduced motion
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReduced) {
+      gl.clearColor(0.047, 0.055, 0.05, 1)
+      gl.clear(gl.COLOR_BUFFER_BIT)
+      window.removeEventListener('resize', resize)
+      return
+    }
+
     const start = Date.now()
     let rafId: number
 
@@ -194,6 +203,8 @@ export default function ShaderBackground() {
   return (
     <canvas
       ref={canvasRef}
+      aria-hidden="true"
+      role="presentation"
       style={{
         position: 'absolute',
         inset: 0,

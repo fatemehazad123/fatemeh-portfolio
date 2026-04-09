@@ -3,10 +3,10 @@
 import { motion } from 'motion/react'
 
 const CONTACT_ITEMS = [
-  { label: 'Email', value: 'info@fatemeh.ca' },
-  { label: 'LinkedIn', value: 'linkedin.com/in/fazadbakht' },
-  { label: 'Portfolio', value: 'fatemeh.ca' },
-  { label: 'Location', value: 'Toronto, Canada' },
+  { label: 'Email',    value: 'info@fatemeh.ca',                href: 'mailto:info@fatemeh.ca',                     ariaLabel: 'Email Fatemeh at info@fatemeh.ca' },
+  { label: 'LinkedIn', value: 'linkedin.com/in/fazadbakht',     href: 'https://linkedin.com/in/fazadbakht',         ariaLabel: "Fatemeh's LinkedIn profile (opens in new tab)" },
+  { label: 'Portfolio',value: 'fatemeh.ca',                     href: 'https://fatemeh.ca',                         ariaLabel: 'Fatemeh\'s portfolio website' },
+  { label: 'Location', value: 'Toronto, Canada',                href: undefined,                                    ariaLabel: undefined },
 ]
 
 export default function Contact() {
@@ -83,6 +83,7 @@ export default function Contact() {
 
           <a
             href="mailto:info@fatemeh.ca"
+            aria-label="Email Fatemeh at info@fatemeh.ca"
             className="contact-cta"
             style={{
               display: 'inline-block',
@@ -130,9 +131,22 @@ export default function Contact() {
               <p style={{ fontFamily: 'var(--font-inter)', fontSize: 9, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.16em', color: 'rgba(28,27,24,0.3)', marginBottom: '0.35rem' }}>
                 {item.label}
               </p>
-              <p style={{ fontFamily: 'var(--font-playfair)', fontSize: '1.1rem', fontWeight: 400, color: 'var(--ink)' }}>
-                {item.value}
-              </p>
+              {item.href ? (
+                <a
+                  href={item.href}
+                  aria-label={item.ariaLabel}
+                  target={item.href.startsWith('http') ? '_blank' : undefined}
+                  rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="inline-link"
+                  style={{ fontFamily: 'var(--font-playfair)', fontSize: '1.1rem', fontWeight: 400, color: 'var(--ink)', textDecoration: 'none' }}
+                >
+                  {item.value}
+                </a>
+              ) : (
+                <p style={{ fontFamily: 'var(--font-playfair)', fontSize: '1.1rem', fontWeight: 400, color: 'var(--ink)' }}>
+                  {item.value}
+                </p>
+              )}
             </div>
           ))}
         </motion.div>

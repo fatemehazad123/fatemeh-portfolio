@@ -58,7 +58,7 @@ export default function About() {
             {hasPortrait && (
               <Image
                 src="/images/portrait.jpg"
-                alt="Fatemeh Azadbakht"
+                alt="Fatemeh Azadbakht, Senior Product and Visual Designer based in Toronto"
                 fill
                 sizes="(max-width: 768px) 100vw, 45vw"
                 style={{ objectFit: 'cover', objectPosition: 'center top' }}
@@ -133,22 +133,22 @@ export default function About() {
 
           {/* Testimonials */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2rem' }}>
-            <div style={{ borderLeft: '2px solid var(--teal)', paddingLeft: '1.25rem' }}>
+            <blockquote style={{ borderLeft: '2px solid var(--teal)', paddingLeft: '1.25rem', margin: 0 }}>
               <p style={{ fontFamily: 'var(--font-playfair)', fontSize: '0.95rem', fontStyle: 'italic', color: 'white', opacity: 0.75, lineHeight: 1.7, marginBottom: '0.6rem' }}>
                 &ldquo;Her dedication, speed and collaborative skills were exceptional. She is creative, highly skilled and fantastic at communicating and interpreting complexity. I would recommend her without hesitation.&rdquo;
               </p>
-              <p style={{ fontFamily: 'var(--font-inter)', fontSize: 8, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.14em', color: 'var(--teal)' }}>
+              <cite style={{ fontFamily: 'var(--font-inter)', fontSize: 8, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.14em', color: 'var(--teal)', fontStyle: 'normal', display: 'block' }}>
                 Dwayne Matthews O.C.T &nbsp;·&nbsp; TD Bank · Innovation Evangelist
-              </p>
-            </div>
-            <div style={{ borderLeft: '2px solid var(--teal)', paddingLeft: '1.25rem' }}>
+              </cite>
+            </blockquote>
+            <blockquote style={{ borderLeft: '2px solid var(--teal)', paddingLeft: '1.25rem', margin: 0 }}>
               <p style={{ fontFamily: 'var(--font-playfair)', fontSize: '0.95rem', fontStyle: 'italic', color: 'white', opacity: 0.75, lineHeight: 1.7, marginBottom: '0.6rem' }}>
                 &ldquo;Her ability to translate complex cultural narratives into clear and effective visual systems has made her a valued creative partner. I confidently recommend her for senior-level branding and experiential design work.&rdquo;
               </p>
-              <p style={{ fontFamily: 'var(--font-inter)', fontSize: 8, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.14em', color: 'var(--teal)' }}>
+              <cite style={{ fontFamily: 'var(--font-inter)', fontSize: 8, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.14em', color: 'var(--teal)', fontStyle: 'normal', display: 'block' }}>
                 Orkideh Salehi &nbsp;·&nbsp; CEO · Silk Road Event &amp; Orkid Gallery
-              </p>
-            </div>
+              </cite>
+            </blockquote>
           </div>
 
           {/* Skills */}

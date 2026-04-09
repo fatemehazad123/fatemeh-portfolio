@@ -9,7 +9,8 @@ const ShaderBackground = dynamic(
 export default function Hero() {
   return (
     <section
-      aria-label="Hero — Senior Product and Visual Designer"
+      id="main-content"
+      aria-label="Fatemeh Azadbakht — Senior Product and Visual Designer"
       style={{
         position: 'relative',
         width: '100%',
@@ -59,7 +60,7 @@ export default function Hero() {
             gap: 12, marginBottom: '2rem',
             animation: 'heroFadeUp 0.8s 0.5s both',
           }}>
-            <div style={{ width: 20, height: 1, background: '#4FA6A1' }} />
+            <div aria-hidden="true" style={{ width: 20, height: 1, background: '#4FA6A1' }} />
             <span style={{
               fontFamily: 'var(--font-inter)',
               fontSize: 9, fontWeight: 600,
@@ -68,15 +69,17 @@ export default function Hero() {
               color: '#4FA6A1',
               textShadow: '0 2px 20px rgba(5,5,4,0.9)',
             }}>Senior Product &amp; Visual Designer · Toronto</span>
-            <div style={{ width: 20, height: 1, background: '#4FA6A1' }} />
+            <div aria-hidden="true" style={{ width: 20, height: 1, background: '#4FA6A1' }} />
           </div>
 
-          {/* NAME */}
-          <div style={{
+          {/* NAME — h1 for semantic heading */}
+          <h1 style={{
+            margin: 0,
             marginBottom: '0.5rem',
             background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(5,5,4,0.75) 0%, transparent 100%)',
             padding: '1rem 3rem',
             borderRadius: 8,
+            fontWeight: 400,
           }}>
             <span className="hero-name" style={{
               fontFamily: 'var(--font-playfair)',
@@ -102,7 +105,7 @@ export default function Hero() {
               animation: 'nameReveal 1s cubic-bezier(0.16,1,0.3,1) 1.15s both',
               filter: 'drop-shadow(0 0 80px rgba(3,3,2,1)) drop-shadow(0 0 40px rgba(3,3,2,0.95))',
             }}>Azadbakht</span>
-          </div>
+          </h1>
 
           {/* Teal line draws under name */}
           <div style={{
@@ -116,7 +119,7 @@ export default function Hero() {
           <p style={{
             fontFamily: 'var(--font-inter)',
             fontSize: 13, fontWeight: 300,
-            color: 'white', opacity: 0.4,
+            color: 'white', opacity: 0.6,
             lineHeight: 1.8, maxWidth: 460,
             marginBottom: '2.25rem',
             animation: 'heroFadeUp 0.8s 2s both',

@@ -861,6 +861,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
       {/* ═══ 10: NEXT PROJECT ═══ */}
       <Link
         href={`/work/${study.nextSlug}`}
+        aria-label={`Next case study: ${study.nextTitle}`}
         className="next-project"
         style={{
           display: 'block',

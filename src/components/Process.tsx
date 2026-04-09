@@ -90,7 +90,7 @@ export default function Process() {
               borderTop: '1px solid rgba(191,207,198,0.1)',
             }}
           >
-            <div style={{ fontFamily: 'var(--font-playfair)', fontSize: '3.5rem', fontWeight: 400, color: 'var(--teal)', opacity: 0.15, lineHeight: 1, marginBottom: '1.5rem' }}>
+            <div aria-hidden="true" style={{ fontFamily: 'var(--font-playfair)', fontSize: '3.5rem', fontWeight: 400, color: 'var(--teal)', opacity: 0.15, lineHeight: 1, marginBottom: '1.5rem' }}>
               {step.number}
             </div>
             <h3 style={{ fontFamily: 'var(--font-playfair)', fontSize: '1.05rem', fontWeight: 400, color: 'white', lineHeight: 1.4, marginBottom: '0.75rem' }}>

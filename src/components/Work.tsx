@@ -122,7 +122,7 @@ export default function Work() {
                           </span>
                         ))}
                       </div>
-                      <span className="work-card-arrow" style={{ width: 36, height: 36, borderRadius: '50%', border: '1px solid rgba(255,255,255,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: 14, transition: 'transform 0.3s ease' }}>
+                      <span aria-hidden="true" className="work-card-arrow" style={{ width: 36, height: 36, borderRadius: '50%', border: '1px solid rgba(255,255,255,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: 14, transition: 'transform 0.3s ease' }}>
                         &rarr;
                       </span>
                     </div>
@@ -192,7 +192,7 @@ export default function Work() {
                         </span>
                       ))}
                     </div>
-                    <span className="work-card-arrow" style={{ width: 32, height: 32, borderRadius: '50%', border: `1px solid ${isDark ? 'rgba(255,255,255,0.15)' : 'rgba(28,27,24,0.15)'}`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: isDark ? 'white' : 'var(--ink)', fontSize: 13, transition: 'transform 0.3s ease' }}>
+                    <span aria-hidden="true" className="work-card-arrow" style={{ width: 32, height: 32, borderRadius: '50%', border: `1px solid ${isDark ? 'rgba(255,255,255,0.15)' : 'rgba(28,27,24,0.15)'}`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: isDark ? 'white' : 'var(--ink)', fontSize: 13, transition: 'transform 0.3s ease' }}>
                       &rarr;
                     </span>
                   </div>

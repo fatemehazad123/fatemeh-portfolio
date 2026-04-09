@@ -20,6 +20,13 @@ export default function Nav() {
   // On all other pages: always cream bg + dark text
   const isDark = isHome && !scrolled
 
+  // aria-current: mark the active destination
+  const isActive = (href: string) => {
+    if (href === '/resume') return pathname === '/resume'
+    // Section anchors all live on the home page
+    return href.includes('#') && pathname === '/'
+  }
+
   return (
     <nav aria-label="Main navigation" style={{
       position: isHome ? 'fixed' : 'sticky',
@@ -40,7 +47,7 @@ export default function Nav() {
       transition: 'background 0.4s ease, border-color 0.4s ease',
     }}>
       {/* Logo */}
-      <Link href="/" style={{
+      <Link href="/" aria-label="Fatemeh Azadbakht — Home" style={{
         fontFamily: 'var(--font-playfair)',
         fontSize: 17,
         color: isDark ? 'white' : '#2E2E2C',
@@ -58,17 +65,22 @@ export default function Nav() {
           { label: 'About',   href: isHome ? '#about'   : '/#about'   },
           { label: 'Resume',  href: '/resume' },
         ] as { label: string; href: string }[]).map(l => (
-          <Link key={l.label} href={l.href} style={{
-            fontFamily: 'var(--font-inter)',
-            fontSize: 9,
-            fontWeight: 500,
-            letterSpacing: '0.18em',
-            textTransform: 'uppercase',
-            color: isDark ? 'rgba(255,255,255,0.65)' : '#2E2E2C',
-            opacity: isDark ? 1 : 0.45,
-            textDecoration: 'none',
-            transition: 'color 0.4s, opacity 0.4s',
-          }}>{l.label}</Link>
+          <Link
+            key={l.label}
+            href={l.href}
+            aria-current={isActive(l.href) ? 'page' : undefined}
+            style={{
+              fontFamily: 'var(--font-inter)',
+              fontSize: 9,
+              fontWeight: 500,
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: isDark ? 'rgba(255,255,255,0.65)' : '#2E2E2C',
+              opacity: isDark ? 1 : 0.65,
+              textDecoration: 'none',
+              transition: 'color 0.4s, opacity 0.4s',
+            }}
+          >{l.label}</Link>
         ))}
       </div>
 
@@ -81,25 +93,32 @@ export default function Nav() {
           fontSize: 9, fontWeight: 500,
           color: '#4FA6A1',
         }}>
-          <div style={{
-            width: 6, height: 6, borderRadius: '50%',
-            background: '#4FA6A1',
-            animation: 'navPulse 2s ease-in-out infinite',
-          }} />
-          {mounted ? 'Available' : ''}
+          {/* Decorative pulsing dot — aria-hidden, text carries the meaning */}
+          <div
+            aria-hidden="true"
+            style={{
+              width: 6, height: 6, borderRadius: '50%',
+              background: '#4FA6A1',
+              animation: 'navPulse 2s ease-in-out infinite',
+            }}
+          />
+          {mounted ? 'Available for work' : ''}
         </div>
-        <Link href={isHome ? '#contact' : '/#contact'} style={{
-          fontFamily: 'var(--font-inter)',
-          fontSize: 9, fontWeight: 600,
-          letterSpacing: '0.14em',
-          textTransform: 'uppercase',
-          background: isDark ? 'white' : '#2E2E2C',
-          color: isDark ? '#0C0C0A' : '#F4F6F4',
-          padding: '0.55rem 1.3rem',
-          borderRadius: 100,
-          textDecoration: 'none',
-          transition: 'background 0.4s, color 0.4s',
-        }}>Let&apos;s Talk</Link>
+        <Link
+          href={isHome ? '#contact' : '/#contact'}
+          aria-label="Contact Fatemeh"
+          style={{
+            fontFamily: 'var(--font-inter)',
+            fontSize: 9, fontWeight: 600,
+            letterSpacing: '0.14em',
+            textTransform: 'uppercase',
+            background: isDark ? 'white' : '#2E2E2C',
+            color: isDark ? '#0C0C0A' : '#F4F6F4',
+            padding: '0.55rem 1.3rem',
+            borderRadius: 100,
+            textDecoration: 'none',
+            transition: 'background 0.4s, color 0.4s',
+          }}>Let&apos;s Talk</Link>
       </div>
 
       <style>{`

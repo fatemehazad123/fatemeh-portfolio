@@ -101,6 +101,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <meta name="theme-color" content="#0C0C0A" />
+      </head>
       <body className={`${playfair.variable} ${inter.variable}`}>
         <script
           type="application/ld+json"
