@@ -44,7 +44,13 @@ const nextConfig = {
   },
 
   images: {
-    domains: ['www.fatemeh.ca'],
+    remotePatterns: [
+      { protocol: 'https', hostname: 'www.fatemeh.ca' },
+      { protocol: 'https', hostname: 'fatemeh.ca' },
+      { protocol: 'https', hostname: 'fatemeh-portfolio.vercel.app' },
+      { protocol: 'https', hostname: 'www.fatemehazadbakht.com' },
+    ],
+    formats: ['image/avif', 'image/webp'],
   },
 }
 
