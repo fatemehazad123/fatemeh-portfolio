@@ -60,6 +60,7 @@ export default function About() {
                 src="/images/portrait.jpg"
                 alt="Fatemeh Azadbakht, Senior Product and Visual Designer based in Toronto"
                 fill
+                loading="eager"
                 sizes="(max-width: 768px) 100vw, 45vw"
                 style={{ objectFit: 'cover', objectPosition: 'center top' }}
                 onError={() => setHasPortrait(false)}

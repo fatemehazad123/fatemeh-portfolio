@@ -90,6 +90,7 @@ export default function Work() {
                         src={study.heroImage}
                         alt={study.title}
                         fill
+                        priority
                         sizes="50vw"
                         style={{ objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94)' }}
                         className="work-card-img"
@@ -160,6 +161,7 @@ export default function Work() {
                       src={study.heroImage}
                       alt={study.title}
                       fill
+                      loading="eager"
                       sizes="50vw"
                       style={{ objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94)' }}
                       className="work-card-img"
