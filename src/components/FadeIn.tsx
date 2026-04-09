@@ -16,8 +16,8 @@ export default function FadeIn({
   return (
     <div ref={ref}>
       <motion.div
-        initial={{ opacity: 0, y: 28 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
+        initial={{ opacity: 1, y: 24 }}
+        animate={inView ? { opacity: 1, y: 0 } : { opacity: 1 }}
         transition={{
           duration: 0.75,
           delay,

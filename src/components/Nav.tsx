@@ -69,6 +69,13 @@ export default function Nav() {
             key={l.label}
             href={l.href}
             aria-current={isActive(l.href) ? 'page' : undefined}
+            onClick={(e) => {
+              const hash = l.href.startsWith('#') ? l.href : null
+              if (hash && isHome) {
+                e.preventDefault()
+                document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' })
+              }
+            }}
             style={{
               fontFamily: 'var(--font-inter)',
               fontSize: 9,

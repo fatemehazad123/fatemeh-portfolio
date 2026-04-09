@@ -59,13 +59,13 @@ export default function Work() {
           const isDark = i === 0 || i === caseStudies.length - 1
           const accent = ACCENT[i] ?? 'var(--teal)'
           const imgBg = IMG_BG[i] ?? 'var(--mid)'
-          const imgHeight = isFeatured ? 340 : 220
+          const imgHeight = isFeatured ? 480 : 260
 
           if (isFeatured) {
             return (
               <motion.div
                 key={study.slug}
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 1, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.6, delay: i * 0.08 }}

@@ -177,8 +177,19 @@ export default function ShaderBackground() {
 
     const start = Date.now()
     let rafId: number
+    let isVisible = true
+
+    // Pause GPU work when hero is not in the viewport
+    const observer = new IntersectionObserver(
+      ([entry]) => { isVisible = entry.isIntersecting },
+      { threshold: 0 }
+    )
+    observer.observe(canvas)
 
     function render() {
+      rafId = requestAnimationFrame(render)
+      if (!isVisible) return  // skip all GPU calls when offscreen
+
       if (!canvas || !gl) return
       const t = (Date.now() - start) / 1000
       gl.clearColor(0.047, 0.055, 0.05, 1)
@@ -190,13 +201,13 @@ export default function ShaderBackground() {
       gl.vertexAttribPointer(attrib, 2, gl.FLOAT, false, 0, 0)
       gl.enableVertexAttribArray(attrib)
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
-      rafId = requestAnimationFrame(render)
     }
     rafId = requestAnimationFrame(render)
 
     return () => {
-      window.removeEventListener('resize', resize)
       cancelAnimationFrame(rafId)
+      observer.disconnect()
+      window.removeEventListener('resize', resize)
     }
   }, [])
 
