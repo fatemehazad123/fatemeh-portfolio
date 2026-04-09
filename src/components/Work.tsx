@@ -84,7 +84,7 @@ export default function Work() {
                   className="work-card work-card-featured"
                 >
                   {/* Image */}
-                  <div style={{ position: 'relative', overflow: 'hidden', minHeight: imgHeight, background: imgBg }}>
+                  <div style={{ position: 'relative', width: '100%', overflow: 'hidden', minHeight: imgHeight, background: imgBg }}>
                     {study.heroImage && (
                       <Image
                         src={study.heroImage}
@@ -155,7 +155,7 @@ export default function Work() {
                 className="work-card"
               >
                 {/* Image */}
-                <div style={{ position: 'relative', overflow: 'hidden', height: imgHeight, background: imgBg, flexShrink: 0 }}>
+                <div style={{ position: 'relative', width: '100%', overflow: 'hidden', height: imgHeight, background: imgBg, flexShrink: 0 }}>
                   {study.heroImage && (
                     <Image
                       src={study.heroImage}
