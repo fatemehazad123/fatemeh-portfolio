@@ -74,10 +74,10 @@ export default function Contact() {
             <em style={{ color: 'var(--teal)' }}>worth using.</em>
           </h2>
 
-          <p style={{ fontFamily: 'var(--font-inter)', fontSize: 13, fontWeight: 300, color: 'rgba(28,27,24,0.5)', marginBottom: '0.75rem', lineHeight: 1.7 }}>
+          <p style={{ fontFamily: 'var(--font-inter)', fontSize: 15, fontWeight: 300, color: 'rgba(28,27,24,0.65)', marginBottom: '0.75rem', lineHeight: 1.7 }}>
             Based in Toronto. Designing for the long term.
           </p>
-          <p style={{ fontFamily: 'var(--font-inter)', fontSize: 13, fontWeight: 300, color: 'var(--ink)', opacity: 0.5, marginBottom: '2rem', lineHeight: 1.7 }}>
+          <p style={{ fontFamily: 'var(--font-inter)', fontSize: 15, fontWeight: 300, color: 'var(--ink)', opacity: 0.65, marginBottom: '2rem', lineHeight: 1.7 }}>
             Currently available for senior and staff designer roles in Toronto or remote Canada. I respond to every message within 24 hours.
           </p>
 
@@ -128,7 +128,7 @@ export default function Contact() {
                 borderBottom: i < CONTACT_ITEMS.length - 1 ? '1px solid var(--mid)' : 'none',
               }}
             >
-              <p style={{ fontFamily: 'var(--font-inter)', fontSize: 9, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.16em', color: 'rgba(28,27,24,0.3)', marginBottom: '0.35rem' }}>
+              <p style={{ fontFamily: 'var(--font-inter)', fontSize: 12, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.16em', color: 'rgba(28,27,24,0.45)', marginBottom: '0.35rem' }}>
                 {item.label}
               </p>
               {item.href ? (

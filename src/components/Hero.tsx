@@ -63,7 +63,7 @@ export default function Hero() {
             <div aria-hidden="true" style={{ width: 20, height: 1, background: '#4FA6A1' }} />
             <span style={{
               fontFamily: 'var(--font-inter)',
-              fontSize: 9, fontWeight: 600,
+              fontSize: 11, fontWeight: 600,
               letterSpacing: '0.24em',
               textTransform: 'uppercase',
               color: '#4FA6A1',
@@ -118,7 +118,7 @@ export default function Hero() {
           {/* Tagline */}
           <p style={{
             fontFamily: 'var(--font-inter)',
-            fontSize: 13, fontWeight: 300,
+            fontSize: 17, fontWeight: 300,
             color: 'white', opacity: 0.6,
             lineHeight: 1.8, maxWidth: 460,
             marginBottom: '2.25rem',
@@ -181,7 +181,7 @@ export default function Hero() {
         }} />
         <span style={{
           fontFamily: 'var(--font-inter)',
-          fontSize: 7, fontWeight: 600,
+          fontSize: 9, fontWeight: 600,
           letterSpacing: '0.2em',
           textTransform: 'uppercase',
           color: 'white',
@@ -219,7 +219,7 @@ export default function Hero() {
             <div>
               <span style={{
                 fontFamily: 'var(--font-inter)',
-                fontSize: 7, fontWeight: 600,
+                fontSize: 10, fontWeight: 600,
                 letterSpacing: '0.14em',
                 textTransform: 'uppercase',
                 color: 'white', opacity: 0.38,
@@ -227,7 +227,7 @@ export default function Hero() {
               }}>{stat.l}</span>
               <span style={{
                 fontFamily: 'var(--font-inter)',
-                fontSize: 8, color: 'white',
+                fontSize: 11, color: 'white',
                 opacity: 0.45, display: 'block',
                 marginTop: 1,
               }}>{stat.s}</span>

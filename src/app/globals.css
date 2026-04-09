@@ -157,6 +157,13 @@ p a, li a, .inline-link {
   .process-steps {
     grid-template-columns: 1fr 1fr !important;
   }
+  .process-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  .process-grid {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 @media (max-width: 480px) {

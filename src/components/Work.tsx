@@ -100,13 +100,13 @@ export default function Work() {
                   {/* Body */}
                   <div style={{ padding: '2.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                     <div>
-                      <p style={{ fontFamily: 'var(--font-inter)', fontSize: 9, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.16em', color: 'var(--teal)', marginBottom: '1rem' }}>
+                      <p style={{ fontFamily: 'var(--font-inter)', fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.16em', color: 'var(--teal)', marginBottom: '1rem' }}>
                         {study.number} - {study.tags[0]}
                       </p>
                       <h3 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(1.3rem, 2.5vw, 2rem)', fontWeight: 400, color: 'white', lineHeight: 1.2, marginBottom: '1rem' }}>
                         {study.title}
                       </h3>
-                      <p style={{ fontFamily: 'var(--font-inter)', fontSize: 12, fontWeight: 300, color: 'rgba(255,255,255,0.55)', lineHeight: 1.75, marginBottom: '0.75rem' }}>
+                      <p style={{ fontFamily: 'var(--font-inter)', fontSize: 15, fontWeight: 300, color: 'rgba(255,255,255,0.55)', lineHeight: 1.75, marginBottom: '0.75rem' }}>
                         {study.cardDescription}
                       </p>
                       {study.statLine && (
@@ -118,7 +118,7 @@ export default function Work() {
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                         {study.tags.slice(0, 2).map(tag => (
-                          <span key={tag} style={{ fontFamily: 'var(--font-inter)', fontSize: 9, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.12em', padding: '0.3rem 0.7rem', border: '1px solid rgba(79,166,161,0.3)', color: 'var(--teal)', borderRadius: 20 }}>
+                          <span key={tag} style={{ fontFamily: 'var(--font-inter)', fontSize: 11, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.12em', padding: '0.3rem 0.7rem', border: '1px solid rgba(79,166,161,0.3)', color: 'var(--teal)', borderRadius: 20 }}>
                             {tag}
                           </span>
                         ))}
@@ -171,13 +171,13 @@ export default function Work() {
                 {/* Body */}
                 <div style={{ padding: '2.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', flex: 1 }}>
                   <div>
-                    <p style={{ fontFamily: 'var(--font-inter)', fontSize: 9, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.16em', color: accent, marginBottom: '0.75rem' }}>
+                    <p style={{ fontFamily: 'var(--font-inter)', fontSize: 10, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.16em', color: accent, marginBottom: '0.75rem' }}>
                       {study.number} - {study.tags[0]}
                     </p>
                     <h3 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(1.3rem, 2.5vw, 2rem)', fontWeight: 400, color: isDark ? 'white' : 'var(--ink)', lineHeight: 1.2, marginBottom: '0.75rem' }}>
                       {study.title}
                     </h3>
-                    <p style={{ fontFamily: 'var(--font-inter)', fontSize: 12, fontWeight: 300, color: isDark ? 'rgba(255,255,255,0.55)' : 'rgba(28,27,24,0.55)', lineHeight: 1.75, marginBottom: '0.75rem' }}>
+                    <p style={{ fontFamily: 'var(--font-inter)', fontSize: 15, fontWeight: 300, color: isDark ? 'rgba(255,255,255,0.80)' : 'rgba(28,27,24,0.80)', lineHeight: 1.75, marginBottom: '0.75rem' }}>
                       {study.cardDescription}
                     </p>
                     {study.statLine && (
@@ -189,7 +189,7 @@ export default function Work() {
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                       {study.tags.slice(0, 2).map(tag => (
-                        <span key={tag} style={{ fontFamily: 'var(--font-inter)', fontSize: 9, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.12em', padding: '0.3rem 0.7rem', border: `1px solid ${accent}44`, color: accent, borderRadius: 20 }}>
+                        <span key={tag} style={{ fontFamily: 'var(--font-inter)', fontSize: 11, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.12em', padding: '0.3rem 0.7rem', border: `1px solid ${accent}44`, color: accent, borderRadius: 20 }}>
                           {tag}
                         </span>
                       ))}
