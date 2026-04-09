@@ -26,4 +26,4 @@ User-agent: PerplexityBot
 Allow: /
 Disallow: /work/first-insurance-portal
 
-Sitemap: https://fatemeh.ca/sitemap.xml
+Sitemap: https://www.fatemeh.ca/sitemap.xml

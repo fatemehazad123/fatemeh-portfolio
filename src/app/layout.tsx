@@ -21,7 +21,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://fatemeh.ca'),
+  metadataBase: new URL('https://www.fatemeh.ca'),
   title: {
     default: 'Fatemeh Azadbakht — Senior Product & Visual Designer',
     template: '%s | Fatemeh Azadbakht',
@@ -41,12 +41,12 @@ export const metadata: Metadata = {
     'Fatemeh Azadbakht',
     'OOBE Studio Toronto',
   ],
-  authors: [{ name: 'Fatemeh Azadbakht', url: 'https://fatemeh.ca' }],
+  authors: [{ name: 'Fatemeh Azadbakht', url: 'https://www.fatemeh.ca' }],
   creator: 'Fatemeh Azadbakht',
   openGraph: {
     type: 'website',
     locale: 'en_CA',
-    url: 'https://fatemeh.ca',
+    url: 'https://www.fatemeh.ca',
     siteName: 'Fatemeh Azadbakht — Portfolio',
     title: 'Fatemeh Azadbakht — Senior Product & Visual Designer',
     description: 'Senior Product and Visual Designer with 15+ years in fintech, enterprise SaaS, and regulated industries. Based in Toronto.',
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://fatemeh.ca',
+    canonical: 'https://www.fatemeh.ca',
   },
   icons: {
     icon: [
@@ -112,7 +112,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               "name": "Fatemeh Azadbakht",
-              "url": "https://fatemeh.ca",
+              "url": "https://www.fatemeh.ca",
               "email": "info@fatemeh.ca",
               "jobTitle": "Senior Product & Visual Designer",
               "description": "Senior Product and Visual Designer with 15+ years building design systems, fintech UX, and enterprise product experiences.",
@@ -123,6 +123,8 @@ export default function RootLayout({
                 "addressCountry": "CA"
               },
               "sameAs": [
+                "https://www.fatemeh.ca",
+                "https://www.fatemehazadbakht.com",
                 "https://linkedin.com/in/fazadbakht"
               ],
               "knowsAbout": [
@@ -148,7 +150,7 @@ export default function RootLayout({
               "worksFor": {
                 "@type": "Organization",
                 "name": "OOBE Studio",
-                "url": "https://fatemeh.ca"
+                "url": "https://www.fatemeh.ca"
               }
             })
           }}

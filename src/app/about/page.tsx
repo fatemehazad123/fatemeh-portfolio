@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "About — Fatemeh Azadbakht",
     description:
       "Senior Product Designer specializing in design systems, UX strategy, and accessibility.",
-    url: "https://fatemeh.ca/about",
+    url: "https://www.fatemeh.ca/about",
   },
 };
 

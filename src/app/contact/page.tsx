@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "Contact — Fatemeh Azadbakht",
     description:
       "Open to senior product design roles in fintech, SaaS, and enterprise.",
-    url: "https://fatemeh.ca/contact",
+    url: "https://www.fatemeh.ca/contact",
   },
 };
 

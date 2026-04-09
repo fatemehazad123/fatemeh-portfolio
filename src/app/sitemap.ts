@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { caseStudies } from '@/lib/caseStudies'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = 'https://fatemeh.ca'
+  const base = 'https://www.fatemeh.ca'
 
   const caseStudyPages = caseStudies
     .filter(s => s.slug !== 'first-insurance-portal')

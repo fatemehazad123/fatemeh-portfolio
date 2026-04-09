@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Work — Fatemeh Azadbakht',
     description: 'Selected case studies in fintech, SaaS, and enterprise.',
-    url: 'https://fatemeh.ca/work',
+    url: 'https://www.fatemeh.ca/work',
   },
 }
 

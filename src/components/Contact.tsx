@@ -5,7 +5,7 @@ import { motion } from 'motion/react'
 const CONTACT_ITEMS = [
   { label: 'Email',    value: 'info@fatemeh.ca',                href: 'mailto:info@fatemeh.ca',                     ariaLabel: 'Email Fatemeh at info@fatemeh.ca' },
   { label: 'LinkedIn', value: 'linkedin.com/in/fazadbakht',     href: 'https://linkedin.com/in/fazadbakht',         ariaLabel: "Fatemeh's LinkedIn profile (opens in new tab)" },
-  { label: 'Portfolio',value: 'fatemeh.ca',                     href: 'https://fatemeh.ca',                         ariaLabel: 'Fatemeh\'s portfolio website' },
+  { label: 'Portfolio',value: 'www.fatemeh.ca',                  href: 'https://www.fatemeh.ca',                         ariaLabel: 'Fatemeh\'s portfolio website' },
   { label: 'Location', value: 'Toronto, Canada',                href: undefined,                                    ariaLabel: undefined },
 ]
 

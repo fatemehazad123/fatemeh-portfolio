@@ -24,10 +24,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: isBlocked ? undefined : {
       title: `${study.title} | Fatemeh Azadbakht`,
       description: study.summary,
-      url: `https://fatemeh.ca/work/${study.slug}`,
+      url: `https://www.fatemeh.ca/work/${study.slug}`,
     },
     alternates: isBlocked ? undefined : {
-      canonical: `https://fatemeh.ca/work/${study.slug}`,
+      canonical: `https://www.fatemeh.ca/work/${study.slug}`,
     },
   }
 }

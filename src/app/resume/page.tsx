@@ -62,7 +62,7 @@ export default function ResumePage() {
               {[
                 { label: 'Toronto, Canada' },
                 { label: 'info@fatemeh.ca',              href: 'mailto:info@fatemeh.ca' },
-                { label: 'fatemeh.ca',                   href: 'https://fatemeh.ca' },
+                { label: 'www.fatemeh.ca',               href: 'https://www.fatemeh.ca' },
                 { label: 'linkedin.com/in/fazadbakht',   href: 'https://linkedin.com/in/fazadbakht' },
               ].map(item => (
                 item.href
