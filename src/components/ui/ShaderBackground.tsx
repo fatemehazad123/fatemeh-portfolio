@@ -78,8 +78,8 @@ export default function ShaderBackground() {
         space.x += random(space.y * warpFrequency + iTime * warpSpeed + 2.0) * warpAmplitude * horizontalFade;
 
         vec4 lines = vec4(0.0);
-        vec4 bgColor1 = vec4(0.047, 0.055, 0.050, 1.0);
-        vec4 bgColor2 = vec4(0.04,  0.085, 0.080, 1.0);
+        vec4 bgColor1 = vec4(0.035, 0.040, 0.038, 1.0);
+        vec4 bgColor2 = vec4(0.030, 0.065, 0.060, 1.0);
 
         for(int l = 0; l < linesPerGroup; l++) {
           float normalizedLineIndex = float(l) / float(linesPerGroup);
@@ -103,7 +103,7 @@ export default function ShaderBackground() {
           else if(mod(float(l), 3.0) < 2.0) chosenColor = lineColor2;
           else                               chosenColor = lineColor3;
 
-          lines += line * chosenColor * rand;
+          lines += line * chosenColor * rand * 0.8;
         }
 
         vec4 fragColor = mix(bgColor1, bgColor2, uv.x + uv.y * 0.3);

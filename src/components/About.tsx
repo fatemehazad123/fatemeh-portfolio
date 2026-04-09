@@ -45,7 +45,7 @@ export default function About() {
           <div
             className="about-img"
             style={{
-              height: 340,
+              height: 420,
               width: '100%',
               borderRadius: 2,
               overflow: 'hidden',

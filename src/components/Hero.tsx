@@ -51,12 +51,18 @@ export default function Hero() {
             letterSpacing: '0.24em',
             textTransform: 'uppercase',
             color: '#4FA6A1',
+            textShadow: '0 2px 20px rgba(5,5,4,0.9)',
           }}>Senior Product &amp; Visual Designer · Toronto</span>
           <div style={{ width: 20, height: 1, background: '#4FA6A1' }} />
         </div>
 
         {/* NAME */}
-        <div style={{ marginBottom: '0.5rem' }}>
+        <div style={{
+          marginBottom: '0.5rem',
+          background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(5,5,4,0.75) 0%, transparent 100%)',
+          padding: '1rem 3rem',
+          borderRadius: 8,
+        }}>
           <span style={{
             fontFamily: 'var(--font-playfair)',
             fontSize: 'clamp(5rem, 11vw, 10rem)',
@@ -64,11 +70,7 @@ export default function Hero() {
             lineHeight: 0.84, letterSpacing: '-0.045em',
             display: 'block',
             animation: 'nameReveal 1s cubic-bezier(0.16,1,0.3,1) 0.9s both',
-            textShadow: [
-              '0 0 120px rgba(10,10,8,0.98)',
-              '0 0 60px rgba(10,10,8,0.9)',
-              '0 4px 40px rgba(10,10,8,0.8)',
-            ].join(', '),
+            textShadow: '0 0 200px rgba(5,5,4,1), 0 0 100px rgba(5,5,4,1), 0 0 60px rgba(5,5,4,0.98), 0 4px 40px rgba(5,5,4,0.9)',
           }}>Fatemeh</span>
 
           <span style={{
@@ -81,7 +83,7 @@ export default function Hero() {
             display: 'block',
             paddingLeft: '3%',
             animation: 'nameReveal 1s cubic-bezier(0.16,1,0.3,1) 1.15s both',
-            filter: 'drop-shadow(0 0 60px rgba(10,10,8,0.95))',
+            filter: 'drop-shadow(0 0 80px rgba(5,5,4,1)) drop-shadow(0 0 40px rgba(5,5,4,0.95))',
           }}>Azadbakht</span>
         </div>
 
@@ -101,7 +103,7 @@ export default function Hero() {
           lineHeight: 1.8, maxWidth: 460,
           marginBottom: '2.25rem',
           animation: 'heroFadeUp 0.8s 2s both',
-          textShadow: '0 2px 30px rgba(10,10,8,0.9)',
+          textShadow: '0 2px 40px rgba(5,5,4,1), 0 0 80px rgba(5,5,4,0.95)',
         }}>
           15 years building design systems for fintech,<br />
           enterprise, and regulated institutions.
