@@ -47,10 +47,10 @@ export default function Process() {
           </span>
         </div>
         <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ y: 10 }}
+          whileInView={{ y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.25 }}
           style={{
             fontFamily: 'var(--font-playfair)',
             fontSize: 'clamp(2rem, 4vw, 3rem)',
@@ -80,10 +80,10 @@ export default function Process() {
         {STEPS.map((step, i) => (
           <motion.div
             key={step.number}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ y: 8 }}
+            whileInView={{ y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, delay: i * 0.1 }}
+            transition={{ duration: 0.2, delay: i * 0.04 }}
             style={{
               background: 'rgba(255,255,255,0.03)',
               padding: '2.5rem',

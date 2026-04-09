@@ -19,7 +19,7 @@ export default function FadeIn({
         initial={{ opacity: 1, y: 24 }}
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 1 }}
         transition={{
-          duration: 0.75,
+          duration: 0.25,
           delay,
           ease: [0.16, 1, 0.3, 1],
         }}

@@ -65,10 +65,10 @@ export default function Work() {
             return (
               <motion.div
                 key={study.slug}
-                initial={{ opacity: 1, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ y: 10 }}
+                whileInView={{ y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
-                transition={{ duration: 0.6, delay: i * 0.08 }}
+                transition={{ duration: 0.25 }}
                 style={{ gridColumn: '1 / -1' }}
               >
                 <Link
@@ -135,10 +135,10 @@ export default function Work() {
           return (
             <motion.div
               key={study.slug}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ y: 10 }}
+              whileInView={{ y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.6, delay: i * 0.08 }}
+              transition={{ duration: 0.25, delay: i * 0.04 }}
             >
               <Link
                 href={`/work/${study.slug}`}

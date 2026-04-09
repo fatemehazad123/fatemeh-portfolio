@@ -110,48 +110,84 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Person",
-              "name": "Fatemeh Azadbakht",
-              "url": "https://www.fatemeh.ca",
-              "email": "info@fatemeh.ca",
-              "jobTitle": "Senior Product & Visual Designer",
-              "description": "Senior Product and Visual Designer with 15+ years building design systems, fintech UX, and enterprise product experiences.",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Toronto",
-                "addressRegion": "Ontario",
-                "addressCountry": "CA"
-              },
-              "sameAs": [
-                "https://www.fatemeh.ca",
-                "https://www.fatemehazadbakht.com",
-                "https://linkedin.com/in/fazadbakht"
-              ],
-              "knowsAbout": [
-                "Product Design",
-                "Design Systems",
-                "Fintech UX",
-                "WCAG Accessibility",
-                "Figma",
-                "Enterprise SaaS Design",
-                "Visual Design",
-                "Brand Systems"
-              ],
-              "hasCredential": [
+              "@graph": [
                 {
-                  "@type": "EducationalOccupationalCredential",
-                  "credentialCategory": "certificate",
-                  "recognizedBy": {
+                  "@type": "Person",
+                  "@id": "https://www.fatemeh.ca/#person",
+                  "name": "Fatemeh Azadbakht",
+                  "url": "https://www.fatemeh.ca",
+                  "image": "https://www.fatemeh.ca/images/portrait.jpg",
+                  "email": "info@fatemeh.ca",
+                  "telephone": "+16478644030",
+                  "jobTitle": "Senior Product & Visual Designer",
+                  "description": "Senior Product and Visual Designer with 15+ years building design systems, fintech UX, and enterprise product experiences for regulated industries in Toronto, Canada.",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Toronto",
+                    "addressRegion": "Ontario",
+                    "addressCountry": "CA"
+                  },
+                  "sameAs": [
+                    "https://www.fatemeh.ca",
+                    "https://www.fatemehazadbakht.com",
+                    "https://linkedin.com/in/fazadbakht"
+                  ],
+                  "knowsAbout": [
+                    "Product Design","UX Design","Design Systems","Fintech UX",
+                    "WCAG Accessibility","Figma","Enterprise SaaS Design",
+                    "Visual Identity","Brand Systems","Information Architecture",
+                    "Interaction Design","AODA Compliance"
+                  ],
+                  "alumniOf": [
+                    {
+                      "@type": "CollegeOrUniversity",
+                      "name": "OCAD University",
+                      "address": { "addressLocality": "Toronto", "addressCountry": "CA" }
+                    },
+                    {
+                      "@type": "CollegeOrUniversity",
+                      "name": "Humber College",
+                      "address": { "addressLocality": "Toronto", "addressCountry": "CA" }
+                    }
+                  ],
+                  "hasOccupation": {
+                    "@type": "Occupation",
+                    "name": "Senior Product and Visual Designer",
+                    "occupationLocation": { "@type": "City", "name": "Toronto" },
+                    "skills": "Product Design, UX Strategy, Design Systems, Figma, WCAG, AODA, Fintech UX, Enterprise SaaS, Visual Identity, Brand Systems, Component Libraries, Design Tokens"
+                  },
+                  "worksFor": {
                     "@type": "Organization",
-                    "name": "OCAD University"
+                    "name": "OOBE Studio",
+                    "url": "https://www.fatemeh.ca",
+                    "description": "Multidisciplinary design studio founded by Fatemeh Azadbakht in 2010, delivering brand, product, and digital design across fintech, enterprise SaaS, and civic sectors"
                   }
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://www.fatemeh.ca/#website",
+                  "url": "https://www.fatemeh.ca",
+                  "name": "Fatemeh Azadbakht — Portfolio",
+                  "description": "Portfolio of Fatemeh Azadbakht, Senior Product and Visual Designer based in Toronto",
+                  "publisher": { "@id": "https://www.fatemeh.ca/#person" },
+                  "inLanguage": "en-CA",
+                  "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "https://www.fatemeh.ca/?s={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                  }
+                },
+                {
+                  "@type": "ProfilePage",
+                  "@id": "https://www.fatemeh.ca/#profilepage",
+                  "url": "https://www.fatemeh.ca",
+                  "name": "Fatemeh Azadbakht — Senior Product & Visual Designer",
+                  "about": { "@id": "https://www.fatemeh.ca/#person" },
+                  "mainEntity": { "@id": "https://www.fatemeh.ca/#person" },
+                  "inLanguage": "en-CA",
+                  "dateModified": "2026-04-09"
                 }
-              ],
-              "worksFor": {
-                "@type": "Organization",
-                "name": "OOBE Studio",
-                "url": "https://www.fatemeh.ca"
-              }
+              ]
             })
           }}
         />

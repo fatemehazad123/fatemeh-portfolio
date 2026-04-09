@@ -36,10 +36,10 @@ export default function About() {
       >
         {/* LEFT: portrait + stats */}
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ y: 12 }}
+          whileInView={{ y: 0 }}
           viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.25 }}
         >
           {/* Portrait */}
           <div
@@ -95,10 +95,10 @@ export default function About() {
 
         {/* RIGHT: text */}
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ y: 12 }}
+          whileInView={{ y: 0 }}
           viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
+          transition={{ duration: 0.25, delay: 0.05 }}
         >
           {/* Label */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>

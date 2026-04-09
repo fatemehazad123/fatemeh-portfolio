@@ -54,10 +54,10 @@ export default function Contact() {
       >
         {/* LEFT */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ y: 10 }}
+          whileInView={{ y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.25 }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
             <span style={{ display: 'block', width: 24, height: 1.5, background: 'var(--teal)' }} />
