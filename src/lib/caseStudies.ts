@@ -124,22 +124,22 @@ export const caseStudies: CaseStudy[] = [
     ],
     outcomes: [
       {
-        metric: '4 + 4',
-        label: 'Lockups and Surface Tiers',
+        metric: '0 → 1',
+        label: 'Brand and Product System',
         description:
-          'Four logo lockups for every use case from app icon to vehicle wrap, plus a four-tier surface system that gives dark mode genuine depth rather than flat inversion',
+          'Complete system designed from a name and a brief, including identity, design tokens, dark mode, and engineering handoff specs',
       },
       {
-        metric: '6',
-        label: 'Token Color System',
+        metric: 'Light + Dark',
+        label: 'Designed in Parallel',
         description:
-          'Six color tokens with documented distribution percentages, WCAG AA verified across light and dark mode combinations, with two tokens deliberately retired in dark mode',
+          'Dark mode reimagined as a parallel design language rather than an inverted palette, with two tokens retired for failing WCAG AA contrast',
       },
       {
-        metric: '230 KB',
-        label: 'Total Font Payload',
+        metric: 'WCAG AA',
+        label: 'Accessibility Verified',
         description:
-          'Complete typographic system loaded in under two-hundred-thirty kilobytes across three font families, with documented fallback stacks for every tier',
+          'Every token combination audited and verified against AA contrast standards across both light and dark modes',
       },
     ],
     keyDecision:
