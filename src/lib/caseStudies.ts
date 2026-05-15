@@ -153,6 +153,8 @@ export const caseStudies: CaseStudy[] = [
     images: [
       '/images/work/muzzomo-hero.jpg',
       '/images/work/muzzomo-01-concepts.jpg',
+      '/images/work/muzzomo-02-system.jpg',
+      '/images/work/muzzomo-03-dark-mode.jpg',
     ],
     tools: ['Figma', 'Adobe Illustrator', 'Adobe Photoshop', 'Adobe InDesign'],
     nextSlug: 'td-bank-cybersecurity',
