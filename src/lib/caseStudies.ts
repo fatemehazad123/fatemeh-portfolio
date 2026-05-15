@@ -51,8 +51,117 @@ interface Testimonial {
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: 'td-bank-cybersecurity',
+    slug: 'muzzomo-brand-system',
     number: '01',
+    title: 'Muzzomo Brand and Product System',
+    subtitle: 'Visual Identity, Design Tokens, and a Dark Mode Reimagined for a Canadian Home Services Marketplace',
+    client: 'Muzzomo',
+    year: '2026',
+    role: 'Brand and Product Design Lead',
+    tags: ['Brand Identity', 'Design Systems', 'Dark Mode', 'Product Design'],
+    cardDescription:
+      'A complete brand and product identity for a Canadian marketplace connecting homeowners with licensed trades. Built as a full design system from concept through dark-mode-ready tokens, with the brand idea deepening rather than dimming in dark mode.',
+    statLine: '6 tokens · 6-tier type system · WCAG AA verified',
+    cardColor: '#082B1B',
+    cardTextColor: '#F0A500',
+    heroImage: '/images/work/muzzomo-hero.jpg',
+    summary:
+      'Muzzomo sits in a difficult position in the Canadian home services market. Mass directories are cheap but untrusted. Premium agencies are credible but inaccessible. Muzzomo is the trustworthy middle, and the brand had to express that without leaning on either extreme. I built the complete identity and product system as one continuous piece of design: foundations, mark, color, type, dark mode, and applications. The dark mode is the part I am proudest of. It is not an inversion. It is a reimagining where the brand idea actually deepens.',
+    problem:
+      'A home services marketplace lives or dies on trust. The brand had to feel as dependable as the trades it represents, without slipping into either generic-corporate sterility or folksy informality.',
+    problemDetails: [
+      'No existing visual system. The starting point was a name, a founder, and an audience. Everything else had to be built from first principles.',
+      'Three audiences with different needs: homeowners want clarity and reassurance, tradespeople want credibility, property managers want efficiency. One brand had to serve all three.',
+      'A marketplace product spans multiple surfaces: marketing site, mobile app, dashboards, embroidered patches, vehicle wraps. A logo alone could not carry that load. The system had to.',
+      'Dark mode could not be an afterthought. The product audience expects it as a first-class experience, but most brand systems treat it as a CSS inversion that flattens the original idea.',
+      'The system had to be engineering-ready: tokens, type scale, contrast ratios, font loading strategy, fallback stacks. A handoff that depended on me being in the room would not survive past month one.',
+    ],
+    myRole:
+      'I led the complete brand and product system end to end. Concept development including three distinct directions and one mascot exploration, logo system with four lockups, six-token color system, four-tier dark mode surface architecture, six-tier typographic ladder, WCAG AA verification across all token combinations, font loading and fallback strategy, voice and tone guidelines, and full application suite from app screens to vehicle wraps. Delivered as a nineteen-page brand book and a set of production-ready assets.',
+    process: [
+      {
+        title: 'Positioning Before Aesthetics',
+        description:
+          'I started with a market map, not a moodboard. Where does Muzzomo sit between mass directories, local listings, and premium agencies? The answer was the trustworthy middle, local and accountable but not boutique. That position became the brief for every visual decision that followed. A brand that wants to be everything to everyone fails the marketplace it serves.',
+      },
+      {
+        title: 'Concept Exploration in Three Directions',
+        description:
+          'I developed three distinct concept directions before locking the final mark, including a mascot route. The mascot was honest work, not a token alternative. It got rejected for the right reason: a marketplace built on trust between strangers needs a calm, structural identity, not a character that distracts from the trades themselves. The selected concept reads as a home with the M as an open door. Two trades, one address.',
+      },
+      {
+        title: 'A Complete System, Not a Logo',
+        description:
+          'I built four lockups for different uses, defined clear-space rules anchored to the M-stem height, specified minimum sizes for print and digital, and produced a set of usage rules with six explicit do-not patterns. The system was designed so that someone six months into a Muzzomo job could reach for the right file without asking me.',
+      },
+      {
+        title: 'Dark Mode as a Reimagining',
+        description:
+          'Most dark modes invert. I treated dark mode as a parallel design language. The primary deep green moves from background to surface. A four-tier surface system replaces the single cream paper of light mode. Cream itself gets warmer to compensate for the loss of paper warmth. Two tokens that failed WCAG AA against the new surfaces were retired entirely. The logo flips inside out: the cream silhouette becomes the body of the house, the M-door is cut through to reveal the canvas behind it. The brand idea deepens in dark mode rather than just adapting to it.',
+      },
+      {
+        title: 'Type as a Conversation Between Two Voices',
+        description:
+          'Fraunces carries the emotional warmth of the brand. Inter does the functional work at every screen size, with tabular numerals for prices and ETAs. Outfit is retained only for the wordmark, locked as a logo asset. I built a six-tier type ladder from display down to mono, with three protective rules: italic is reserved for two or three brand moments per page, tabular for data and proportional for prose, and a font loading strategy that lands the system in under two-hundred-thirty kilobytes total.',
+      },
+      {
+        title: 'Production-Ready Handoff',
+        description:
+          'The system was delivered as design tokens ready for implementation, with explicit CSS custom property names, fallback font stacks, and WCAG AA verified contrast ratios across all six combinations. A nineteen-page brand book documents every decision and shows the system at work across vehicle wraps, embroidered patches, mobile screens, packaging, and signage.',
+      },
+    ],
+    solution:
+      'A complete brand and product system built as one continuous piece of design, with a dark mode that reimagines the brand instead of inverting it.',
+    solutionPoints: [
+      'Strategic positioning as the trustworthy middle between mass directories and premium agencies, with a market map driving every subsequent visual decision',
+      'Concept system built around the home-with-open-door idea, selected from three explored directions including a rejected mascot route',
+      'Four logo lockups with clear-space rules, minimum sizes, and six explicit do-not patterns',
+      'Six-token color system with documented distribution percentages calibrated for both light and dark modes',
+      'Four-tier dark mode surface architecture replacing the cream-paper warmth of light mode without flattening the brand',
+      'Six-tier typographic ladder pairing Fraunces and Inter, with three protective rules governing italic use, numerals, and font loading',
+      'WCAG AA verified across all token combinations, with two tokens retired in dark mode for failing contrast requirements',
+      'Nineteen-page brand book delivered as a production-ready system, from foundations through applications',
+    ],
+    outcomes: [
+      {
+        metric: '4 + 4',
+        label: 'Lockups and Surface Tiers',
+        description:
+          'Four logo lockups for every use case from app icon to vehicle wrap, plus a four-tier surface system that gives dark mode genuine depth rather than flat inversion',
+      },
+      {
+        metric: '6',
+        label: 'Token Color System',
+        description:
+          'Six color tokens with documented distribution percentages, WCAG AA verified across light and dark mode combinations, with two tokens deliberately retired in dark mode',
+      },
+      {
+        metric: '230 KB',
+        label: 'Total Font Payload',
+        description:
+          'Complete typographic system loaded in under two-hundred-thirty kilobytes across three font families, with documented fallback stacks for every tier',
+      },
+    ],
+    keyDecision:
+      'The decision to design dark mode as a parallel language rather than a CSS inversion. The brand idea was warmth and hospitality, and a literal inversion would have killed it. Instead I rebuilt the surface system from the ground up, retired tokens that failed the new contrast environment, and flipped the logo so the door becomes negative space. Dark mode deepens the brand instead of dimming it.',
+    tradeoff:
+      'A parallel dark mode system takes significantly more work than inverting a light mode palette. Two color tokens had to be retired entirely, every contrast ratio had to be re-verified, and the logo needed a second construction. The upfront cost is real. The payoff is a product surface that does not feel like the brand turned off when the user switched themes.',
+    retrospective:
+      'The mascot direction I rejected taught me more than the one I kept. Building it fully before discarding it is what proved the door-as-M concept was actually the right answer. A token alternative that exists only to make the preferred direction look better is a waste of the work it took to build it. Both directions had to be real for the choice to mean anything.',
+    confidentialityNote:
+      'Muzzomo is currently in concept review stage. Outcomes describe the depth and completeness of the system as delivered, not post-launch metrics. The full brand book is available on request.',
+    images: [
+      '/images/work/muzzomo-hero.jpg',
+      '/images/work/muzzomo-01-concepts.jpg',
+    ],
+    tools: ['Figma', 'Adobe Illustrator', 'Adobe Photoshop', 'Adobe InDesign'],
+    nextSlug: 'td-bank-cybersecurity',
+    nextTitle: 'TD Bank Cybersecurity Report',
+  },
+
+  {
+    slug: 'td-bank-cybersecurity',
+    number: '02',
     title: 'TD Bank Cybersecurity Report',
     subtitle: 'Annual Report Design for TD Bank',
     client: 'TD Bank',
@@ -155,7 +264,7 @@ export const caseStudies: CaseStudy[] = [
 
   {
     slug: 'little-iran-identity',
-    number: '02',
+    number: '03',
     title: 'Little Iran Cultural District',
     subtitle: 'Public Space Identity System for the City of Toronto',
     client: 'City of Toronto',
@@ -249,7 +358,7 @@ export const caseStudies: CaseStudy[] = [
 
   {
     slug: 'first-insurance-portal',
-    number: '03',
+    number: '04',
     title: 'FIRST Insurance: 11 Years of Product and Design Systems',
     subtitle: 'Design Systems, Fintech UX, and Brand Governance Across a Regulated Financial Enterprise',
     client: 'FIRST Insurance Funding of Canada',
@@ -432,7 +541,7 @@ export const caseStudies: CaseStudy[] = [
       role: 'Director, Founder and CEO, Silk Road Event and Orkid Gallery Collection',
     },
     keyDecision: 'The decision to build the system around three abstract principles before making any visual choices. Flow, Connection, and Layered Cultural Motifs became filters rather than references. Every subsequent decision could be evaluated against them rather than against subjective aesthetic preference.',
-    tradeoff: 'Abstract design principles are harder to sell in a client presentation than a vivid visual direction. The rationale required more explanation. But it produced a system that vendors could interpret correctly without constant oversight — which under live event timelines, was the entire point.',
+    tradeoff: 'Abstract design principles are harder to sell in a client presentation than a vivid visual direction. The rationale required more explanation. But it produced a system that vendors could interpret correctly without constant oversight, which under live event timelines, was the entire point.',
     retrospective: 'The six-week timeline forced decisions that a longer process might have second-guessed. In retrospect, the constraint improved the work. Fewer revision cycles meant the system remained internally consistent instead of being refined into compromise.',
     tools: ['Figma', 'Adobe Illustrator', 'Adobe InDesign', 'Adobe Photoshop'],
     images: [
@@ -544,8 +653,8 @@ export const caseStudies: CaseStudy[] = [
       '/images/work/lso-05.jpg',
       '/images/work/lso-06.jpg',
     ],
-    nextSlug: 'td-bank-cybersecurity',
-    nextTitle: 'TD Bank Cybersecurity Report',
+    nextSlug: 'muzzomo-brand-system',
+    nextTitle: 'Muzzomo Brand and Product System',
   },
 ]
 
