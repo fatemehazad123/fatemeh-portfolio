@@ -35,6 +35,8 @@ export interface CaseStudy {
 interface ProcessStep {
   title: string
   description: string
+  image?: string
+  pullQuote?: string
 }
 
 interface Outcome {
@@ -80,34 +82,40 @@ export const caseStudies: CaseStudy[] = [
       'I led the complete brand and product system end to end. Concept development including three distinct directions and one mascot exploration, logo system with four lockups, six-token color system, four-tier dark mode surface architecture, six-tier typographic ladder, WCAG AA verification across all token combinations, font loading and fallback strategy, voice and tone guidelines, and full application suite from app screens to vehicle wraps. Delivered as a nineteen-page brand book and a set of production-ready assets.',
     process: [
       {
-        title: 'Positioning Before Aesthetics',
+        title: 'Positioning & Concept',
         description:
-          'I started with a market map, not a moodboard. Where does Muzzomo sit between mass directories, local listings, and premium agencies? The answer was the trustworthy middle, local and accountable but not boutique. That position became the brief for every visual decision that followed. A brand that wants to be everything to everyone fails the marketplace it serves.',
-      },
-      {
-        title: 'Concept Exploration in Three Directions',
-        description:
-          'I developed three distinct concept directions before locking the final mark, including a mascot route. The mascot was honest work, not a token alternative. It got rejected for the right reason: a marketplace built on trust between strangers needs a calm, structural identity, not a character that distracts from the trades themselves. The selected concept reads as a home with the M as an open door. Two trades, one address.',
+          'I started with a market map, not a moodboard. Muzzomo sits in the trustworthy middle — local and accountable but not boutique — and that position became the brief for every visual decision that followed. From there I developed three concept directions, including a mascot route. The mascot was honest work, not a token alternative, and it got rejected for the right reason: a marketplace built on trust between strangers needs a calm, structural identity, not a character that distracts from the trades themselves. The selected concept reads as a home with the M as an open door. Two trades, one address.',
+        image: '/images/work/muzzomo-08-market-map.jpg',
       },
       {
         title: 'A Complete System, Not a Logo',
         description:
           'I built four lockups for different uses, defined clear-space rules anchored to the M-stem height, specified minimum sizes for print and digital, and produced a set of usage rules with six explicit do-not patterns. The system was designed so that someone six months into a Muzzomo job could reach for the right file without asking me.',
+        image: '/images/work/muzzomo-02-system.jpg',
       },
       {
         title: 'Dark Mode as a Reimagining',
         description:
-          'Most dark modes invert. I treated dark mode as a parallel design language. The primary deep green moves from background to surface. A four-tier surface system replaces the single cream paper of light mode. Cream itself gets warmer to compensate for the loss of paper warmth. Two tokens that failed WCAG AA against the new surfaces were retired entirely. The logo flips inside out: the cream silhouette becomes the body of the house, the M-door is cut through to reveal the canvas behind it. The brand idea deepens in dark mode rather than just adapting to it.',
+          'Most dark modes invert. I treated dark mode as a parallel design language. The primary deep green moves from background to surface. A four-tier surface system replaces the single cream paper of light mode. Cream itself gets warmer to compensate for the loss of paper warmth. The logo flips inside out: the cream silhouette becomes the body of the house, the M-door is cut through to reveal the canvas behind it. The brand idea deepens in dark mode rather than just adapting to it.',
+        image: '/images/work/muzzomo-05-surface-tiers.jpg',
       },
       {
-        title: 'Type as a Conversation Between Two Voices',
+        title: 'Production Handoff',
         description:
-          'Fraunces carries the emotional warmth of the brand. Inter does the functional work at every screen size, with tabular numerals for prices and ETAs. Outfit is retained only for the wordmark, locked as a logo asset. I built a six-tier type ladder from display down to mono, with three protective rules: italic is reserved for two or three brand moments per page, tabular for data and proportional for prose, and a font loading strategy that lands the system in under two-hundred-thirty kilobytes total.',
+          'Final delivery was a set of CSS design tokens with explicit property names, fallback font stacks, and WCAG AA verified contrast across all six combinations, alongside a nineteen-page brand book that documents every decision and shows the system at work across vehicle wraps, embroidered patches, mobile screens, packaging, and signage.',
+        image: '/images/work/muzzomo-09-tokens-code.jpg',
       },
       {
-        title: 'Production-Ready Handoff',
+        title: 'Color System',
         description:
-          'The system was delivered as design tokens ready for implementation, with explicit CSS custom property names, fallback font stacks, and WCAG AA verified contrast ratios across all six combinations. A nineteen-page brand book documents every decision and shows the system at work across vehicle wraps, embroidered patches, mobile screens, packaging, and signage.',
+          'I built a six-token color system with documented distribution percentages: deep green 50%, cream 25%, mid green 12%, amber 8%, slate 5%. Each token maps to a semantic role rather than a literal color name, so dark mode can re-map without breaking the brand. Two tokens were retired entirely in dark mode for failing WCAG AA contrast against the new surfaces.',
+        image: '/images/work/muzzomo-04-color-system.jpg',
+      },
+      {
+        title: 'Typography System',
+        description:
+          'Fraunces carries the emotional warmth of the brand, Inter handles the functional work at every screen size with tabular numerals for prices and ETAs, and Outfit is retained only for the wordmark. The six-tier type ladder is governed by three protective rules: italic reserved for a few brand moments per page, tabular for data and proportional for prose, and a font loading strategy that lands the system under 230 kilobytes total.',
+        image: '/images/work/muzzomo-06-type-ladder.jpg',
       },
     ],
     solution:
@@ -155,6 +163,11 @@ export const caseStudies: CaseStudy[] = [
       '/images/work/muzzomo-01-concepts.jpg',
       '/images/work/muzzomo-02-system.jpg',
       '/images/work/muzzomo-03-dark-mode.jpg',
+      '/images/work/muzzomo-04-color-system.jpg',
+      '/images/work/muzzomo-05-surface-tiers.jpg',
+      '/images/work/muzzomo-06-type-ladder.jpg',
+      '/images/work/muzzomo-08-market-map.jpg',
+      '/images/work/muzzomo-09-tokens-code.jpg',
     ],
     tools: ['Figma', 'Adobe Illustrator', 'Adobe Photoshop', 'Adobe InDesign'],
     nextSlug: 'td-bank-cybersecurity',

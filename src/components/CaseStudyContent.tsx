@@ -1,8 +1,10 @@
 'use client'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { motion } from 'motion/react'
+import { motion, AnimatePresence } from 'motion/react'
 import type { CaseStudy } from '@/lib/caseStudies'
+import Lightbox from './Lightbox'
 
 const fadeUp = {
   initial: { opacity: 0, y: 32 },
@@ -22,6 +24,40 @@ function staggerItem(delay: number) {
 
 export default function CaseStudyContent({ study }: { study: CaseStudy }) {
   const galleryImages = study.images ? study.images.slice(1) : []
+
+  const galleryButtonRefs = useRef<Record<string, HTMLButtonElement | null>>({})
+  const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null)
+  const processScrollRef = useRef<HTMLDivElement>(null)
+  const [scrollProgress, setScrollProgress] = useState(0)
+
+  const openLightbox = (src: string, alt: string) => setLightbox({ src, alt })
+  const closeLightbox = () => {
+    const trigger = lightbox ? galleryButtonRefs.current[lightbox.src] : null
+    setLightbox(null)
+    trigger?.focus()
+  }
+
+  useEffect(() => {
+    const el = processScrollRef.current
+    if (!el) return
+    const onScroll = () => {
+      const max = el.scrollWidth - el.clientWidth
+      setScrollProgress(max > 0 ? el.scrollLeft / max : 0)
+    }
+    const onWheel = (e: WheelEvent) => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX) && e.deltaY !== 0) {
+        e.preventDefault()
+        el.scrollLeft += e.deltaY
+      }
+    }
+    el.addEventListener('scroll', onScroll, { passive: true })
+    el.addEventListener('wheel', onWheel, { passive: false })
+    onScroll()
+    return () => {
+      el.removeEventListener('scroll', onScroll)
+      el.removeEventListener('wheel', onWheel)
+    }
+  }, [])
 
   return (
     <main id="main-content" style={{ background: 'var(--cream)' }}>
@@ -464,7 +500,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
 
       {/* ═══ 6: PROCESS ═══ */}
       <section style={{
-        background: 'var(--ink)',
+        background: 'var(--cream)',
         padding: 'clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 4rem)',
       }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
@@ -473,64 +509,63 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
               fontFamily: 'var(--font-inter)',
               fontSize: '9px', fontWeight: 700,
               letterSpacing: '0.2em', textTransform: 'uppercase',
-              color: '#4FA6A1', marginBottom: '1rem',
+              color: 'var(--teal)', marginBottom: '1rem',
               display: 'flex', alignItems: 'center', gap: '0.75rem',
             }}>
-              <span style={{ display: 'inline-block', width: '20px', height: '1px', background: '#4FA6A1' }} />
+              <span style={{ display: 'inline-block', width: '20px', height: '1px', background: 'var(--teal)' }} />
               Process
             </div>
             <h2 style={{
               fontFamily: 'var(--font-playfair)',
               fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)',
-              fontWeight: 400, color: 'white', lineHeight: 1.15, margin: 0,
+              fontWeight: 400, color: 'var(--ink)', lineHeight: 1.15, margin: 0,
             }}>
               How I approached it
             </h2>
           </motion.div>
 
-          <div
-            className="process-steps"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              background: 'rgba(255,255,255,0.03)',
-            }}
-          >
-            {study.process.map((step, i) => (
-              <motion.div
-                key={i}
-                {...staggerItem(i * 0.1)}
-                style={{
-                  padding: '2.5rem 2rem',
-                  borderRight: i < study.process.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none',
-                  position: 'relative', overflow: 'hidden',
-                }}
-              >
-                <div style={{
-                  fontFamily: 'var(--font-playfair)',
-                  fontSize: '4rem', fontWeight: 400,
-                  color: 'rgba(255,255,255,0.05)',
-                  lineHeight: 1, marginBottom: '1.5rem',
-                }}>
-                  0{i + 1}
-                </div>
-                <h3 style={{
-                  fontFamily: 'var(--font-playfair)',
-                  fontSize: '1.05rem', fontWeight: 400,
-                  color: 'white', marginBottom: '0.75rem',
-                  lineHeight: 1.35,
-                }}>
-                  {step.title}
-                </h3>
-                <p style={{
-                  fontFamily: 'var(--font-inter)',
-                  fontSize: '12px', fontWeight: 300,
-                  color: 'rgba(255,255,255,0.48)', lineHeight: 1.8, margin: 0,
-                }}>
-                  {step.description}
-                </p>
-              </motion.div>
-            ))}
+          <div ref={processScrollRef} className="process-scroll">
+            {study.process.map((step, i) => {
+              const stepNum = `0${i + 1}`
+
+              return (
+                <motion.article
+                  key={i}
+                  {...staggerItem(i * 0.08)}
+                  className="process-card"
+                >
+                  <div className="process-card-step">Step {stepNum}</div>
+                  {step.image ? (
+                    <button
+                      type="button"
+                      ref={(el) => { galleryButtonRefs.current[step.image!] = el }}
+                      onClick={() => openLightbox(step.image!, `${step.title} — ${study.title}`)}
+                      className="process-card-image"
+                      aria-label={`Open ${step.title} image`}
+                    >
+                      <Image
+                        src={step.image}
+                        alt={`${step.title} — ${study.title}`}
+                        fill quality={90}
+                        sizes="(max-width: 768px) 80vw, 360px"
+                        style={{ objectFit: 'cover' }}
+                      />
+                    </button>
+                  ) : (
+                    <div
+                      className="process-card-image process-card-image--empty"
+                      aria-hidden="true"
+                    />
+                  )}
+                  <h3 className="process-card-title">{step.title}</h3>
+                  <p className="process-card-desc">{step.description}</p>
+                </motion.article>
+              )
+            })}
+          </div>
+
+          <div className="process-progress" aria-hidden="true">
+            <div style={{ left: `${scrollProgress * 75}%` }} />
           </div>
         </div>
       </section>
@@ -564,39 +599,55 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
                   {first && (
                     <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '2px' }}>
-                      <motion.div
+                      <motion.button
                         {...fadeUp}
+                        type="button"
+                        ref={(el) => { galleryButtonRefs.current[first] = el }}
+                        onClick={() => openLightbox(first, `${study.title} – Visual 1`)}
                         className="gallery-item"
-                        style={{ position: 'relative', height: '360px', overflow: 'hidden', background: 'rgba(79,166,161,0.04)' }}
+                        style={{
+                          position: 'relative', height: '360px', overflow: 'hidden',
+                          background: 'rgba(28,27,24,0.04)',
+                          border: 'none', padding: 0, cursor: 'pointer',
+                          width: '100%', display: 'block',
+                        }}
                       >
                         <Image
                           src={first}
                           alt={`${study.title} – Visual 1`}
                           fill quality={90} sizes="(max-width: 768px) 100vw, 65vw"
-                          style={{ objectFit: 'cover' }}
+                          style={{ objectFit: 'contain' }}
                           onError={e => {
                             const p = (e.target as HTMLElement).closest('.gallery-item') as HTMLElement
                             if (p) p.style.display = 'none'
                           }}
                         />
-                      </motion.div>
+                      </motion.button>
                       {second && (
-                        <motion.div
+                        <motion.button
                           {...staggerItem(0.1)}
+                          type="button"
+                          ref={(el) => { galleryButtonRefs.current[second] = el }}
+                          onClick={() => openLightbox(second, `${study.title} – Visual 2`)}
                           className="gallery-item"
-                          style={{ position: 'relative', height: '360px', overflow: 'hidden', background: 'rgba(79,166,161,0.04)' }}
+                          style={{
+                            position: 'relative', height: '360px', overflow: 'hidden',
+                            background: 'rgba(28,27,24,0.04)',
+                            border: 'none', padding: 0, cursor: 'pointer',
+                            width: '100%', display: 'block',
+                          }}
                         >
                           <Image
                             src={second}
                             alt={`${study.title} – Visual 2`}
                             fill quality={90} sizes="(max-width: 768px) 100vw, 35vw"
-                            style={{ objectFit: 'cover' }}
+                            style={{ objectFit: 'contain' }}
                             onError={e => {
                               const p = (e.target as HTMLElement).closest('.gallery-item') as HTMLElement
                               if (p) p.style.display = 'none'
                             }}
                           />
-                        </motion.div>
+                        </motion.button>
                       )}
                     </div>
                   )}
@@ -626,15 +677,20 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
                       gap: '2px',
                     }}>
                       {rest.map((img, i) => (
-                        <motion.div
+                        <motion.button
                           key={img}
                           {...staggerItem(i * 0.07)}
+                          type="button"
+                          ref={(el) => { galleryButtonRefs.current[img] = el }}
+                          onClick={() => openLightbox(img, `${study.title} – Visual ${i + 3}`)}
                           className="gallery-item"
                           style={{
                             position: 'relative',
                             height: isLarge ? '200px' : '280px',
                             overflow: 'hidden',
-                            background: 'rgba(79,166,161,0.04)',
+                            background: 'rgba(28,27,24,0.04)',
+                            border: 'none', padding: 0, cursor: 'pointer',
+                            width: '100%', display: 'block',
                           }}
                         >
                           <Image
@@ -642,13 +698,13 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
                             alt={`${study.title} – Visual ${i + 3}`}
                             fill quality={90}
                             sizes="(max-width: 768px) 100vw, 33vw"
-                            style={{ objectFit: 'cover' }}
+                            style={{ objectFit: 'contain' }}
                             onError={e => {
                               const p = (e.target as HTMLElement).closest('.gallery-item') as HTMLElement
                               if (p) p.style.display = 'none'
                             }}
                           />
-                        </motion.div>
+                        </motion.button>
                       ))}
                     </div>
                   )}
@@ -914,6 +970,16 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
         </div>
       </Link>
 
+      <AnimatePresence>
+        {lightbox && (
+          <Lightbox
+            src={lightbox.src}
+            alt={lightbox.alt}
+            onClose={closeLightbox}
+          />
+        )}
+      </AnimatePresence>
+
       <style>{`
         @media (max-width: 900px) {
           .hero-meta { display: none !important; }
@@ -922,12 +988,134 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
         @media (max-width: 768px) {
           .overview-grid    { grid-template-columns: 1fr !important; gap: 3rem !important; }
           .challenge-grid   { grid-template-columns: 1fr !important; }
-          .process-steps    { grid-template-columns: 1fr 1fr !important; }
           .solution-grid    { grid-template-columns: 1fr !important; }
           .testimonial-grid { grid-template-columns: 1fr !important; }
+          .process-card       { flex: 0 0 78vw !important; }
         }
-        @media (max-width: 480px) {
-          .process-steps { grid-template-columns: 1fr !important; }
+        .process-scroll {
+          display: flex;
+          gap: 1.25rem;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+          padding-bottom: 0.25rem;
+        }
+        .process-scroll::-webkit-scrollbar { display: none; }
+
+        .process-card {
+          flex: 0 0 360px;
+          height: 480px;
+          background: var(--cream);
+          border: 1px solid rgba(28,27,24,0.12);
+          scroll-snap-align: start;
+          display: flex;
+          flex-direction: column;
+          padding: 1.5rem;
+          transition: border-color 0.2s ease;
+        }
+        .process-card:hover {
+          border-color: rgba(28,27,24,0.25);
+        }
+
+        .process-card-step {
+          display: flex;
+          align-items: center;
+          gap: 0.65rem;
+          font-family: var(--font-inter);
+          font-size: 11px;
+          font-weight: 600;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          color: var(--teal);
+          margin-bottom: 1rem;
+        }
+        .process-card-step::before {
+          content: '';
+          display: block;
+          width: 3px;
+          height: 24px;
+          background: var(--teal);
+        }
+
+        .process-card-image {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 16 / 9;
+          background: rgba(28,27,24,0.04);
+          overflow: hidden;
+          border: none;
+          padding: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          margin-bottom: 1rem;
+          outline: 1px solid transparent;
+          outline-offset: -1px;
+          transition: outline-color 0.25s ease;
+        }
+        button.process-card-image:hover,
+        button.process-card-image:focus-visible {
+          outline-color: var(--teal);
+        }
+        .process-card-image--empty {
+          background: transparent;
+          border: 1px solid rgba(28,27,24,0.12);
+          cursor: default;
+        }
+
+        .process-card-title {
+          font-family: var(--font-playfair);
+          font-style: normal;
+          font-size: 1.15rem;
+          font-weight: 400;
+          color: var(--ink);
+          line-height: 1.3;
+          margin: 0 0 0.5rem;
+        }
+        .process-card-desc {
+          font-family: var(--font-inter);
+          font-size: 13px;
+          font-weight: 400;
+          color: rgba(28,27,24,0.7);
+          line-height: 1.65;
+          margin: 0;
+          display: -webkit-box;
+          -webkit-line-clamp: 5;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .process-progress {
+          position: relative;
+          height: 2px;
+          width: 160px;
+          background: rgba(28,27,24,0.08);
+          margin: 1.5rem 0 0;
+        }
+        .process-progress > div {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          width: 25%;
+          background: var(--ink);
+          transition: left 0.1s linear;
+        }
+        .gallery-item {
+          outline: 1px solid transparent;
+          outline-offset: -1px;
+          transition: outline-color 0.25s ease;
+        }
+        .gallery-item:hover,
+        .gallery-item:focus-visible {
+          outline-color: var(--teal);
+        }
+        .gallery-item img {
+          transition: transform 0.4s ease;
+        }
+        .gallery-item:hover img {
+          transform: scale(1.01);
         }
         .next-project:hover .next-arrow {
           transform: translateX(8px);
