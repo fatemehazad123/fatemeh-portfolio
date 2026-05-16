@@ -332,11 +332,18 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
       {/* ═══ 4: PHOTO STRIP ═══ */}
       {study.images && study.images.length > 0 && (
         <section className="photo-strip" aria-label={`${study.title} — image strip`}>
-          <div className={
-            study.images.length <= 6
-              ? 'photo-strip-track photo-strip-track--triple'
-              : 'photo-strip-track'
-          }>
+          <div
+            className={
+              study.images.length <= 6
+                ? 'photo-strip-track photo-strip-track--triple'
+                : 'photo-strip-track'
+            }
+            style={{
+              animationDuration: `${
+                study.images.length * (study.images.length <= 6 ? 14 : 7)
+              }s`,
+            }}
+          >
             {Array.from(
               { length: study.images.length <= 6 ? 3 : 2 },
               () => study.images!,
@@ -923,10 +930,12 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
           gap: 16px;
           width: max-content;
           height: 360px;
-          animation: photo-strip-scroll-double 55s linear infinite;
+          animation-name: photo-strip-scroll-double;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
         }
         .photo-strip-track--triple {
-          animation: photo-strip-scroll-triple 55s linear infinite;
+          animation-name: photo-strip-scroll-triple;
         }
         .photo-strip:hover .photo-strip-track {
           animation-play-state: paused;
